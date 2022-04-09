@@ -52,7 +52,7 @@ userSchema.methods.isCorrectPassword = async function (password) {
 };
 
 // get the amount of tips someone has made, couting their tip history
-userSchema.virtual("tipHistoryCount").get(function () {
+userSchema.virtual("tipCount").get(function () {
   return this.tipHistory.length;
 });
 
