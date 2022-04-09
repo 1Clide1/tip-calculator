@@ -8,7 +8,7 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
-    bookCount: Int
+    tipCount: Int
     tipHistory: [Tip]
     percentages: [Percentage]
     password: String
@@ -17,12 +17,12 @@ const typeDefs = gql`
   type Tip {
     _id: ID
     tipId: String
-    tip: Number
+    tip: Int
   }
   type Percentage {
     _id: ID
     percentageId: String
-    percentage: Number
+    percentage: Int
   }
 
   type Auth {
@@ -37,8 +37,8 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addTipHistoy(tip: Number!): User
-    addPercentage(percentage: Number!): User
+    addTipHistory(tip: Int!): User
+    addPercentage(percentage: Int!): User
   }
 `;
 
