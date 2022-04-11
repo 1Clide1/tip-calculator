@@ -2,7 +2,7 @@ const { Schema } = require("mongoose");
 
 const PercentageSchema = new Schema({
   percentage: {
-    type: Number,
+    type: String,
     required: true,
   },
 });

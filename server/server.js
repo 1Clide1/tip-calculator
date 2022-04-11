@@ -40,9 +40,9 @@ if (process.env.NODE_ENV === "production") {
 
 // this is the new way to use graphql's api route
 // server is good to go!
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "../client/build/index.html"));
-// });
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
 
 // commenting out the old use routes function because I am now using graphql instead of the restful api
 // app.use(routes);

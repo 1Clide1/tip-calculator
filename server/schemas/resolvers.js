@@ -80,7 +80,7 @@ const resolvers = {
       if (context.user) {
         const updateUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $push: { percentage: args } },
+          { $push: { percentages: args } },
           { new: true, runValidators: true }
         );
         return updateUser;

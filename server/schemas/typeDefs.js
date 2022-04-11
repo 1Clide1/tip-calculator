@@ -16,13 +16,11 @@ const typeDefs = gql`
 
   type Tip {
     _id: ID
-    tipId: String
     tip: Int
   }
   type Percentage {
     _id: ID
-    percentageId: String
-    percentage: Int
+    percentage: String
   }
 
   type Auth {
@@ -38,7 +36,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addTipHistory(tip: Int!): User
-    addPercentage(percentage: Int!): User
+    addPercentage(percentage: String!): User
   }
 `;
 
