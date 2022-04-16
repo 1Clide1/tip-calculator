@@ -1,0 +1,23 @@
+/* basic set up */
+html {
+  height: 100%;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Share Tech", sans-serif;
+}
+/* root utility classes */
+:root {
+  --primary-color: #ffe6e6;
+  --secondary-color: #ffabe1;
+  --third-color: #a685e2;
+  --fourth-color: #6155a6;
+}
+body {
+  font-family: "Rubik", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--primary-color);
+  color: var(--fourth-color);
+}
