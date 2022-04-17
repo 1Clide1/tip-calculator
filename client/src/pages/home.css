@@ -1,0 +1,11 @@
+.tip-calculator-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+  z-index: 1;
+}
+.tip-total {
+  display: inline-block;
+}
