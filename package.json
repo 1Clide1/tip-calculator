@@ -1,7 +1,7 @@
 {
-  "name": "googlebooks-app",
+  "name": "tip-calculator",
   "version": "1.0.0",
-  "description": "",
+  "description": "this is an app where you can figure out how much tip you want to pay after a night or day out dining",
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
