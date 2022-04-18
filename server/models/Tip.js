@@ -2,7 +2,7 @@ const { Schema } = require("mongoose");
 
 const TipSchema = new Schema({
   tip: {
-    type: Number,
+    type: String,
     required: true,
   },
 });

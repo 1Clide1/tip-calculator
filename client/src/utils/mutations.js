@@ -27,12 +27,11 @@ export const ADD_USER = gql`
 `;
 // mutation to add tips that the user makes to the user
 export const ADD_TIP_HISTORY = gql`
-  mutation addTipHistory($tip: Int!) {
+  mutation addTipHistory($tip: String!) {
     addTipHistory(tip: $tip) {
       _id
       username
       tipHistory {
-        _id
         tip
       }
     }
@@ -45,7 +44,6 @@ export const ADD_PERCENTAGE = gql`
       _id
       username
       percentages {
-        _id
         percentage
       }
     }
