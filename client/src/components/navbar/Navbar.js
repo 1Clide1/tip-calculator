@@ -3,8 +3,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { mainNavItems } from "./navItems";
 import Auth from "../../utils/auth";
-// import SignUpForm from "../../pages/SignupForm";
-// import LoginForm from "../../pages/LoginForm";
 import "./navbar.css";
 
 const Navbar = () => {
@@ -33,7 +31,7 @@ const Navbar = () => {
           })}
           {Auth.loggedIn() ? (
             <li>
-              <Link onClick={Auth.logout} className="navbar-links">
+              <Link onClick={Auth.logout} to="/" className="navbar-links">
                 {" "}
                 Logout
               </Link>
