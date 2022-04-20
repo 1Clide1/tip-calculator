@@ -11,6 +11,9 @@ const Navbar = () => {
   const handleClick = () => {
     setClick(!clicked);
   };
+  const closeMenu = (e) => {
+    console.log(e.target);
+  };
   return (
     <>
       <nav className="navbar-container">
@@ -22,7 +25,7 @@ const Navbar = () => {
           {mainNavItems.map((item, index) => {
             return (
               // make sure li always has a key
-              <li key={index}>
+              <li key={index} onClick={closeMenu}>
                 <Link className={item.cName} to={item.url}>
                   {item.text}
                 </Link>

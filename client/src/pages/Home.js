@@ -51,41 +51,31 @@ const Home = () => {
   // function to make the calculation
   const tipCalculator = async () => {
     console.log(form, percentage);
-    const tip = form.bill * percentage.value;
+    const tip = parseInt(form.bill * percentage.value);
     setTotal({
       tip,
     });
-    try {
-      console.log(percentage.value);
-      await addTipHistory({
-        variables: { tip: String(tip) },
-      });
-      await addPercentage({
-        variables: { percentage: percentage.value },
-      });
-    } catch (e) {
-      console.log(e, error, err);
+    if (Auth.loggedIn()) {
+      try {
+        console.log(percentage.value);
+        await addTipHistory({
+          variables: { tip: String(tip) },
+        });
+        await addPercentage({
+          variables: { percentage: String(percentage.value) },
+        });
+        console.log(
+          `added tip history $${tip} and percentage ${percentage.value}% to user`
+        );
+      } catch (e) {
+        console.log(e, error, err);
+      }
     }
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
     await tipCalculator();
     await setSubmit(true);
-    // const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-    // if (!token) {
-    //   return false;
-    // }
-
-    // console.log(total.tip);
-    // console.log(token);
-    // try {
-    //   await addTipHistory({
-    //     variables: { tipHistory: total.tip },
-    //   });
-    // } catch (e) {
-    //   console.log(e, error);
-    // }
   };
 
   return (
@@ -129,8 +119,10 @@ const Home = () => {
           <br />
           <input type="submit" />
         </form>
-        <p className="tip-total">Your tip is:</p>{" "}
-        {submit ? <p className="tip-total">${total.tip}</p> : null}
+        <div className="result-container">
+          <p className="tip-total-text">Your tip is:</p>{" "}
+          {submit ? <p className="tip-total-text">${total.tip}</p> : null}
+        </div>
       </div>
     </>
   );
