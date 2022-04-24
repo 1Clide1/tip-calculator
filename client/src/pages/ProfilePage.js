@@ -44,10 +44,11 @@ const ProfilePage = () => {
       if (modeMap[el] > maxCount) {
         maxEl = el;
         maxCount = modeMap[el];
-      } else if (modeMap[el] === maxCount) {
-        maxEl += "&" + el;
-        maxCount = modeMap[el];
       }
+      // else if (modeMap[el] === maxCount) {
+      //   maxEl += "&" + el;
+      //   maxCount = modeMap[el];
+      // }
     }
     return maxEl;
   };
