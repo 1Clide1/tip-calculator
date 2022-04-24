@@ -13,6 +13,7 @@ import { setContext } from "@apollo/client/link/context";
 import Home from "./pages/Home";
 import SignupForm from "./pages/SignupForm";
 import LoginForm from "./pages/LoginForm";
+import ProfilePage from "./pages/ProfilePage";
 // import components
 import Navbar from "./components/navbar/Navbar";
 // import css for the main app
@@ -51,6 +52,8 @@ function App() {
           <Route exact path="/signup" component={SignupForm} />
           {/* login form */}
           <Route exact path="/login" component={LoginForm} />
+          {/* profile page */}
+          <Route exact path="/profile" component={ProfilePage} />
           <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
         </Switch>
       </Router>
