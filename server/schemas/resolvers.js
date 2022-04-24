@@ -10,11 +10,35 @@ const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       // using context to get the user information
-      // basically if user exists then grab the user by its id while adding their saved books
       if (context.user) {
         // populate has to be in lowercase and is not case insensitive
         const userData = await User.findOne({ _id: context.user._id }).populate(
-          "savedbooks"
+          "tiphistory",
+          "percentages"
+        );
+        return userData;
+      }
+      //if not then throw an error
+      throw new AuthenticationError(
+        "You are not logged in, can't find anything!"
+      );
+    },
+    tips: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findOne({ _id: context.user._id }).populate(
+          "tiphistory"
+        );
+        return userData;
+      }
+      //if not then throw an error
+      throw new AuthenticationError(
+        "You are not logged in, can't find anything!"
+      );
+    },
+    percentages: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findOne({ _id: context.user._id }).populate(
+          "percentages"
         );
         return userData;
       }

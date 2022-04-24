@@ -44,9 +44,6 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
-// commenting out the old use routes function because I am now using graphql instead of the restful api
-// app.use(routes);
-
 db.once("open", () => {
   app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`));
 });
