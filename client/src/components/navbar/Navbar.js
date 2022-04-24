@@ -11,8 +11,9 @@ const Navbar = () => {
   const handleClick = () => {
     setClick(!clicked);
   };
-  const closeMenu = (e) => {
-    console.log(e.target);
+  // if you click a element in the nav then the menu would close after
+  const closeMenu = () => {
+    setClick(!clicked);
   };
   return (
     <>
