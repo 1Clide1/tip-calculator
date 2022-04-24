@@ -1,0 +1,7 @@
+.tip-history-container {
+  background-color: var(--secondary-color);
+  width: 85%;
+  height: 20vh;
+  border-radius: 10px;
+  overflow-y: auto;
+}
