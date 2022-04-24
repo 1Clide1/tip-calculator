@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Keep Da Change- Tip Calculator",
+  "name": "A simple app where you can find out how much you need to tip after a night of dinning out",
   "icons": [],
   "start_url": ".",
   "display": "standalone",
