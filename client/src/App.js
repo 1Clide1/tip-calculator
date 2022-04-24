@@ -10,9 +10,12 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 // import pages
+// home is where the tip calculator is
 import Home from "./pages/Home";
+// sign up and login pages
 import SignupForm from "./pages/SignupForm";
 import LoginForm from "./pages/LoginForm";
+// profile page
 import ProfilePage from "./pages/ProfilePage";
 // import components
 import Navbar from "./components/navbar/Navbar";
