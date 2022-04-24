@@ -29,7 +29,7 @@ const ProfilePage = () => {
   // function to get the most frequent number
   const modeString = (array) => {
     // if the array has nothing then return nothing
-    if (array.length === 0) return null;
+    if (array.length <= 1) return null;
 
     let modeMap = {},
       maxEl = array[0],
@@ -59,13 +59,25 @@ const ProfilePage = () => {
     <>
       <div className="profile-page-container">
         <span className="profile-title"> {userData.username}'s Tips Stats</span>
-        <div className="tip-history-container">
-          <span>Your Tip History</span>
-          <span>You have tipped:{userData.tipCount} times</span>
-          {userData.tipHistory.map((tips, i) => (
-            <p key={i}>{tips.tip}</p>
-          ))}
-          <span> Usually tip ${modeString(tipHistory)}</span>
+        <aside>
+          <div className="tip-history-container">
+            <span className="tip-history-title">Tip History:</span>
+            <br />
+            <span className="tip-count">
+              You have tipped:{userData.tipCount} times
+            </span>
+            {userData.tipHistory.map((tips, i) => (
+              <p className="tips-text" key={i}>
+                ${tips.tip}
+              </p>
+            ))}
+          </div>
+        </aside>
+        <div className="fun-facts-container">
+          <span className="facts-title">Fun Facts</span>
+          <span className="most-tipped-text">
+            You Usually tip ${modeString(tipHistory)}
+          </span>
         </div>
       </div>
     </>
