@@ -20,7 +20,7 @@ html {
   --accent-lighter: rgb(252, 243, 249);
   --accent-black: rgba(26, 0, 6, 0.733);
   --accent-white: rgba(255, 255, 255, 0.979);
-  --accent-error: rgb(255, 118, 203);
+  --accent-error: rgb(252, 67, 77);
   /* font size vars */
   --font-size-100: 0.5rem;
   --font-size-200: 0.7rem;
