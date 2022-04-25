@@ -29,6 +29,8 @@ const Home = () => {
 
   // mutation to add percentages
   const [addPercentage, { err }] = useMutation(ADD_PERCENTAGE);
+  // state to have button clicked
+  // const [btnClicked, setBtnClicked] = useState(false);
   // handle input field
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -77,22 +79,26 @@ const Home = () => {
     await tipCalculator();
     await setSubmit(true);
   };
-
+  // const changeBtnStyle = (e) => {
+  //   console.log(e.target.value);
+  //   if (e.target.value === e.target.value) setBtnClicked(!btnClicked);
+  // };
   return (
     <>
       <div className="tip-calculator-container">
-        <form onSubmit={handleSubmit}>
-          <label> Enter Your Bill Amount</label> <br />
+        <form className="tip-form-container" onSubmit={handleSubmit}>
+          <label className="label-title"> Enter Your Bill Amount</label> <br />
           <input
+            className="bill-input"
             name="bill"
+            type="number"
             placeholder="how much $"
             onChange={handleInput}
             value={form.bill}
           />
-          <br />
-          <label>How Much Do You Want To Tip</label>
-          <br />
+          <label className="label-title">How Much Do You Want To Tip</label>
           <button
+            className="percent-btn"
             type="button"
             id={percentage.ten}
             value={0.1}
@@ -101,6 +107,7 @@ const Home = () => {
             10%
           </button>
           <button
+            className="percent-btn"
             type="button"
             id={percentage.fifteen}
             value={0.15}
@@ -109,6 +116,7 @@ const Home = () => {
             15%
           </button>
           <button
+            className="percent-btn"
             type="button"
             id={percentage.twenty}
             value={0.2}
@@ -116,8 +124,7 @@ const Home = () => {
           >
             20%
           </button>
-          <br />
-          <input type="submit" />
+          <input className="submit-btn submit-tip" type="submit" />
         </form>
         <div className="result-container">
           <p className="tip-total-text">Your tip is:</p>{" "}
