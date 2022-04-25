@@ -33,6 +33,13 @@
   width: 100%;
   padding: 0.3rem;
   margin-bottom: 0.2rem;
+  border: 1px solid var(--accent-black);
+  color: var(--fourth-color);
+  background-color: var(--accent-lighter);
+}
+
+.form-input:focus {
+  outline: 1px solid var(--third-color);
 }
 
 .submit-btn {
