@@ -7,6 +7,8 @@ const { ApolloServer } = require("apollo-server-express");
 const { authMiddleware } = require("./utils/auth");
 // import the schemas to the server
 const { typeDefs, resolvers } = require("./schemas");
+// import this interesting compression package to hopefully decrease load times
+const compression = require("compression");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -32,7 +34,12 @@ startServer();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
+// use the compression
+app.use(
+  compression({
+    level: 6,
+  })
+);
 // if we're in production, serve client/build as static assets
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
