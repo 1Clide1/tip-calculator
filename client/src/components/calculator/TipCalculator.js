@@ -27,12 +27,7 @@ const TipCalculator = () => {
     groupTip: "",
     groupTotal: "",
   });
-  //   const [tip, setTip] = useState({
-  //     tip: "",
-  //   });
-  const [total, setTotal] = useState({
-    tip: "",
-  });
+
   //   state to manage whether there is a group or not
   const [group, setGroup] = useState(false);
 
@@ -70,13 +65,14 @@ const TipCalculator = () => {
     });
     console.log(e.target.value);
   };
-  // function to make the calculation
+  // function to make the calculations
   const tipCalculator = async () => {
     if (group) {
       const groupTip = parseInt((form.bill * percentage.value) / form.groupNum);
       const groupTotal = String(
         (parseInt(form.bill) + parseInt(groupTip)) / parseInt(form.groupNum)
       );
+
       setResultAmount({
         groupTip,
         groupTotal,
@@ -86,9 +82,7 @@ const TipCalculator = () => {
       console.log(form, percentage);
       const tip = String(parseInt(form.bill * percentage.value));
       const total = String(parseInt(form.bill) + parseInt(tip));
-      // setTip({
-      //   tip,
-      // });
+
       setResultAmount({
         tip,
         total,
@@ -112,11 +106,13 @@ const TipCalculator = () => {
       }
     }
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     await tipCalculator();
     await setSubmit(true);
   };
+
   // const changeBtnStyle = (e) => {
   //   console.log(e.target.value);
   //   if (e.target.value === e.target.value) setBtnClicked(!btnClicked);
@@ -135,6 +131,8 @@ const TipCalculator = () => {
             name="bill"
             type="number"
             placeholder="how much $"
+            required
+            minLength="1"
             onChange={handleInput}
             value={form.bill}
           />
@@ -177,7 +175,12 @@ const TipCalculator = () => {
                 onClick={handleGroup}
               />{" "}
               <span className="label-title">No</span>
-              <input className="checkbox" name="nogroup" type="checkbox" />
+              <input
+                className="checkbox"
+                name="nogroup"
+                required
+                type="checkbox"
+              />
             </div>
           </div>
           {group ? (
@@ -190,6 +193,8 @@ const TipCalculator = () => {
                 name="groupNum"
                 type="number"
                 placeholder="how big is the group?"
+                required
+                minLength="1"
                 onChange={handleInput}
                 value={form.groupNum}
               />
