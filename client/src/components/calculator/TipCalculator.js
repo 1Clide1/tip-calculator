@@ -27,9 +27,12 @@ const TipCalculator = () => {
     groupTip: "",
     groupTotal: "",
   });
-  //   const [totalAmount, setTotalAmount] = useState({
-  //     total: "",
+  //   const [tip, setTip] = useState({
+  //     tip: "",
   //   });
+  const [total, setTotal] = useState({
+    tip: "",
+  });
   //   state to manage whether there is a group or not
   const [group, setGroup] = useState(false);
 
@@ -69,7 +72,7 @@ const TipCalculator = () => {
   };
   // function to make the calculation
   const tipCalculator = async () => {
-    if (group === true) {
+    if (group) {
       const groupTip = parseInt((form.bill * percentage.value) / form.groupNum);
       const groupTotal = String(
         (parseInt(form.bill) + parseInt(groupTip)) / parseInt(form.groupNum)
@@ -81,32 +84,31 @@ const TipCalculator = () => {
       console.log(resultAmount.groupTotal, resultAmount.groupTip);
     } else {
       console.log(form, percentage);
-      const tip = parseInt(form.bill * percentage.value);
+      const tip = String(parseInt(form.bill * percentage.value));
       const total = String(parseInt(form.bill) + parseInt(tip));
+      // setTip({
+      //   tip,
+      // });
       setResultAmount({
         tip,
         total,
       });
-    }
 
-    // setTotalAmount({
-    //   total,
-    // });
-
-    if (Auth.loggedIn()) {
-      try {
-        console.log(percentage.value);
-        await addTipHistory({
-          variables: { tip: String(resultAmount.tip) },
-        });
-        await addPercentage({
-          variables: { percentage: String(percentage.value) },
-        });
-        console.log(
-          `added tip history $${resultAmount.tip} and percentage ${percentage.value}% to user`
-        );
-      } catch (e) {
-        console.log(e, error, err);
+      if (Auth.loggedIn()) {
+        console.log(tip);
+        try {
+          await addTipHistory({
+            variables: { tip: String(tip) },
+          });
+          await addPercentage({
+            variables: { percentage: String(percentage.value) },
+          });
+          console.log(
+            `added tip history $${tip} and percentage ${percentage.value}% to user`
+          );
+        } catch (e) {
+          console.log(e, error, err);
+        }
       }
     }
   };
@@ -119,7 +121,7 @@ const TipCalculator = () => {
   //   console.log(e.target.value);
   //   if (e.target.value === e.target.value) setBtnClicked(!btnClicked);
   // };
-  console.log(resultAmount);
+
   return (
     <>
       <h1 className="tip-title">
