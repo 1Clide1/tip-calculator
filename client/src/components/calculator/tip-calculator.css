@@ -39,6 +39,11 @@
   display: flex;
   flex-direction: column;
 }
+/* for the group per-person label to let you know that it is per person */
+.group-text {
+  font-size: var(--font-size-300);
+  font-weight: 800;
+}
 /* for the labels on the calculator form */
 .label-title {
   font-weight: 500;
@@ -112,5 +117,10 @@
     font-size: var(--font-size-800);
     bottom: 115px;
     left: 3px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .group-text {
+    font-size: var(--font-size-200);
   }
 }
