@@ -12,7 +12,7 @@ const TipCalculator = () => {
   // set state for form
   const [form, setForm] = useState({
     bill: "",
-    group: "",
+    groupNum: "",
   });
 
   // set state for button percentages
@@ -21,12 +21,15 @@ const TipCalculator = () => {
   });
 
   // state to hold the total of the tip
-  const [tipAmount, setTipAmount] = useState({
+  const [resultAmount, setResultAmount] = useState({
     tip: "",
-  });
-  const [totalAmount, setTotalAmount] = useState({
     total: "",
+    groupTip: "",
+    groupTotal: "",
   });
+  //   const [totalAmount, setTotalAmount] = useState({
+  //     total: "",
+  //   });
   //   state to manage whether there is a group or not
   const [group, setGroup] = useState(false);
 
@@ -50,13 +53,11 @@ const TipCalculator = () => {
     });
     console.log(e.target.value);
   };
-  //   function to setup the group question that way it appears
+  //   function to setup the group form question
   const handleGroup = () => {
-    // const groupQuestionnaire = document.querySelector(
-    //   "group-question-container"
-    // );
     setGroup(!group);
   };
+  console.log(group);
   // handle button values
   const handlePercentage = (e) => {
     const { value } = e.target;
@@ -68,27 +69,41 @@ const TipCalculator = () => {
   };
   // function to make the calculation
   const tipCalculator = async () => {
-    console.log(form, percentage);
-    const tip = parseInt(form.bill * percentage.value);
-    const total = String(parseInt(form.bill) + parseInt(tip));
-    setTipAmount({
-      tip,
-    });
-    setTotalAmount({
-      total,
-    });
+    if (group === true) {
+      const groupTip = parseInt((form.bill * percentage.value) / form.groupNum);
+      const groupTotal = String(
+        (parseInt(form.bill) + parseInt(groupTip)) / parseInt(form.groupNum)
+      );
+      setResultAmount({
+        groupTip,
+        groupTotal,
+      });
+      console.log(resultAmount.groupTotal, resultAmount.groupTip);
+    } else {
+      console.log(form, percentage);
+      const tip = parseInt(form.bill * percentage.value);
+      const total = String(parseInt(form.bill) + parseInt(tip));
+      setResultAmount({
+        tip,
+        total,
+      });
+    }
+
+    // setTotalAmount({
+    //   total,
+    // });
 
     if (Auth.loggedIn()) {
       try {
         console.log(percentage.value);
         await addTipHistory({
-          variables: { tip: String(tip) },
+          variables: { tip: String(resultAmount.tip) },
         });
         await addPercentage({
           variables: { percentage: String(percentage.value) },
         });
         console.log(
-          `added tip history $${tip} and percentage ${percentage.value}% to user`
+          `added tip history $${resultAmount.tip} and percentage ${percentage.value}% to user`
         );
       } catch (e) {
         console.log(e, error, err);
@@ -104,10 +119,12 @@ const TipCalculator = () => {
   //   console.log(e.target.value);
   //   if (e.target.value === e.target.value) setBtnClicked(!btnClicked);
   // };
-  console.log(totalAmount);
+  console.log(resultAmount);
   return (
     <>
-      <h1 className="tip-title">Tip Calculator</h1>
+      <h1 className="tip-title">
+        <i className="lni lni-money-location"></i> Tip Calculator
+      </h1>
       <div className="tip-calculator-container">
         <form className="tip-form-container" onSubmit={handleSubmit}>
           <label className="label-title"> Enter Your Bill Amount</label> <br />
@@ -168,20 +185,48 @@ const TipCalculator = () => {
               </label>
               <input
                 className="bill-input"
-                name="group"
+                name="groupNum"
                 type="number"
                 placeholder="how big is the group?"
-                value={form.group}
+                onChange={handleInput}
+                value={form.groupNum}
               />
             </>
           ) : null}
           <input className="submit-btn submit-tip" type="submit" />
         </form>
         <div className="result-container">
-          <p className="results-text">Your tip is:</p>{" "}
-          {submit ? <p className="results-text">${tipAmount.tip}</p> : null}
-          <p className="results-text">Your total is:</p>{" "}
-          {submit ? <p className="results-text">${totalAmount.total}</p> : null}
+          {group ? (
+            <p className="results-text">Your group's tips are:</p>
+          ) : (
+            <p className="results-text">Your tip is:</p>
+          )}
+          {group ? (
+            <p className="results-text group-text">*per-person*</p>
+          ) : null}
+          {submit ? (
+            group ? (
+              <p className="results-text">{resultAmount.groupTip}</p>
+            ) : (
+              <p className="results-text">${resultAmount.tip}</p>
+            )
+          ) : null}
+          {group ? (
+            <p className="results-text">Your group's total is:</p>
+          ) : (
+            <p className="results-text">Your total is:</p>
+          )}
+
+          {group ? (
+            <p className="results-text group-text">*per-person*</p>
+          ) : null}
+          {submit ? (
+            group ? (
+              <p className="results-text">{resultAmount.groupTotal}</p>
+            ) : (
+              <p className="results-text">${resultAmount.total}</p>
+            )
+          ) : null}
         </div>
       </div>
     </>
