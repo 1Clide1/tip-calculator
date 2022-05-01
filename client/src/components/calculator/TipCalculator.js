@@ -175,12 +175,7 @@ const TipCalculator = () => {
                 onClick={handleGroup}
               />{" "}
               <span className="label-title">No</span>
-              <input
-                className="checkbox"
-                name="nogroup"
-                required
-                type="checkbox"
-              />
+              <input className="checkbox" name="nogroup" type="checkbox" />
             </div>
           </div>
           {group ? (
