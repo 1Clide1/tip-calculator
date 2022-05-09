@@ -19,3 +19,13 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const GET_TIPS = gql`
+  query tips {
+    tips {
+      tipHistory {
+        tip
+      }
+    }
+  }
+`;

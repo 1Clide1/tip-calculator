@@ -3,28 +3,24 @@ import React, { useState, useEffect } from "react";
 // import graphql
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
+import { GET_TIPS } from "../utils/queries";
 // import css
 import "./profile-page.css";
 // import { removeBookId } from '../utils/localStorage';
 
 const ProfilePage = () => {
-  const [tipHistory, setTipHistory] = useState([""]);
+  // grabbing the user data
   const { loading, data } = useQuery(QUERY_ME);
+  // grabbing the tips from the user data
+  const { loading: loadingTips, data: tipData } = useQuery(GET_TIPS);
+  // setting the userdata as a variable or an empty object if there is nothing
   const userData = data?.me || {};
+  // now grabbing the tips data
+  const tipsData = tipData?.tips.tipHistory || {};
+  // mapping out the tips data to display the tip history
+  const tipHistory = Object.values(tipsData).map((tip) => tip.tip);
 
-  // function to store tips into a state. got it to work by saying that if the tiphistory exists then map out the tip history.
-  const getTips = async () => {
-    if (userData.tipHistory) {
-      const tipData = await userData.tipHistory.map((tip) => tip.tip);
-      await setTipHistory(tipData);
-      console.log(tipData);
-    }
-  };
-
-  useEffect(() => {
-    getTips();
-    // dependency gives a slight error however it gives the intended result so I am fine with that small error the sugestion gives an infinite loop
-  }, [userData.tipHistory]);
+  console.log(tipHistory);
 
   // function to get the most frequent number
   const modeString = (array) => {
@@ -67,9 +63,9 @@ const ProfilePage = () => {
             <span className="tip-count">
               You have tipped:{userData.tipCount} times
             </span>
-            {userData.tipHistory.map((tips, i) => (
+            {tipHistory.map((tips, i) => (
               <p className="tips-text" key={i}>
-                ${tips.tip}
+                ${tips}
               </p>
             ))}
           </div>
@@ -77,6 +73,7 @@ const ProfilePage = () => {
         <div className="fun-facts-container">
           <span className="facts-title">Fun Facts</span>
           <span className="most-tipped-text">
+            {/* got rid of the use effect and replaced it with a better option */}
             You Usually tip ${modeString(tipHistory)}
           </span>
         </div>
