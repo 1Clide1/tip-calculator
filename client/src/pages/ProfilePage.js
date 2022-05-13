@@ -63,11 +63,15 @@ const ProfilePage = () => {
             <span className="tip-count">
               You have tipped:{userData.tipCount} times
             </span>
-            {tipHistory.map((tips, i) => (
-              <p className="tips-text" key={i}>
-                ${tips}
-              </p>
-            ))}
+            {loadingTips ? (
+              <span>LOADING TIPS...</span>
+            ) : (
+              tipHistory.map((tips, i) => (
+                <p className="tips-text" key={i}>
+                  ${tips}
+                </p>
+              ))
+            )}
           </div>
         </aside>
         <div className="fun-facts-container">
