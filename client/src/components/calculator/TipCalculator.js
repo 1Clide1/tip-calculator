@@ -31,15 +31,18 @@ const TipCalculator = () => {
   //   state to manage whether there is a group or not
   const [group, setGroup] = useState(false);
 
+  // states for the percent button validation
+  const [tenPercentBtnClicked, setPercentBtn] = useState(false);
+  const [fifteenPercentBtnClicked, setFifteenPercentBtn] = useState(false);
+  const [twentyPercentBtnClicked, setTwentyPercentBtn] = useState(false);
+  // check if the percent button states are false
+  const [percentBtnNotClicked, setNotClicked] = useState(false);
   //   MUTATIONS
   // mutation to add tip history
   const [addTipHistory, { error }] = useMutation(ADD_TIP_HISTORY);
 
   // mutation to add percentages
   const [addPercentage, { err }] = useMutation(ADD_PERCENTAGE);
-
-  // state to have button clicked
-  // const [btnClicked, setBtnClicked] = useState(false);
 
   //   FUNCTIONS
   // handle input field
@@ -64,7 +67,17 @@ const TipCalculator = () => {
       value,
     });
     console.log(e.target.value);
+    if (e.target.name === "ten-percent-btn") {
+      setPercentBtn(!tenPercentBtnClicked);
+    } else if (e.target.name === "fifteen-percent-btn") {
+      setFifteenPercentBtn(!fifteenPercentBtnClicked);
+    } else if (e.target.name === "twenty-percent-btn") {
+      setTwentyPercentBtn(!twentyPercentBtnClicked);
+    }
+    // the rest of the buttons become unusable
+    setNotClicked(!percentBtnNotClicked);
   };
+  // function
   // function to make the calculations
   const tipCalculator = async () => {
     if (group) {
@@ -138,8 +151,16 @@ const TipCalculator = () => {
           />
           <label className="label-title">How Much Do You Want To Tip</label>
           <button
-            className="percent-btn"
+            // a little gross but if a button is clicked then it will be green if not it will be unusable
+            className={
+              !tenPercentBtnClicked
+                ? !percentBtnNotClicked
+                  ? "percent-btn"
+                  : "percent-btn not-clicked"
+                : "percent-btn clicked"
+            }
             type="button"
+            name="ten-percent-btn"
             id={percentage.ten}
             value={0.1}
             onClick={handlePercentage}
@@ -147,8 +168,15 @@ const TipCalculator = () => {
             10%
           </button>
           <button
-            className="percent-btn"
+            className={
+              !fifteenPercentBtnClicked
+                ? !percentBtnNotClicked
+                  ? "percent-btn"
+                  : "percent-btn not-clicked"
+                : "percent-btn clicked"
+            }
             type="button"
+            name="fifteen-percent-btn"
             id={percentage.fifteen}
             value={0.15}
             onClick={handlePercentage}
@@ -156,8 +184,15 @@ const TipCalculator = () => {
             15%
           </button>
           <button
-            className="percent-btn"
+            className={
+              !twentyPercentBtnClicked
+                ? !percentBtnNotClicked
+                  ? "percent-btn"
+                  : "percent-btn not-clicked"
+                : "percent-btn clicked"
+            }
             type="button"
+            name="twenty-percent-btn"
             id={percentage.twenty}
             value={0.2}
             onClick={handlePercentage}
