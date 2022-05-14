@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 // import Auth from "../utils/auth";
 // import graphql
 import { useQuery } from "@apollo/client";
@@ -6,6 +6,8 @@ import { QUERY_ME } from "../utils/queries";
 import { GET_TIPS } from "../utils/queries";
 // import css
 import "./profile-page.css";
+// import react loader
+import { Grid } from "react-loader-spinner";
 // import { removeBookId } from '../utils/localStorage';
 
 const ProfilePage = () => {
@@ -50,7 +52,11 @@ const ProfilePage = () => {
   };
 
   if (loading) {
-    return <h2>GETTING THE TIP STATS...</h2>;
+    return (
+      <div className="loader-icon">
+        <Grid height="200" width="200" color="#6155a6" ariaLabel="loading" />
+      </div>
+    );
   }
   return (
     <>
