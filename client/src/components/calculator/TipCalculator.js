@@ -133,6 +133,25 @@ const TipCalculator = () => {
 
   return (
     <>
+      {/* title and meta tags for the tip calculator component */}
+      <title>Keep Da Change: Tip Calculator Web App</title>
+      <meta
+        name="description"
+        content="You ever need to figure out the tip on a night out? well now you can with this cool tip calculator!"
+      />
+      {/* twitter card meta data */}
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:creator" content="@clidert" />
+      <meta property="og:url" content="https://www.keepdachange.app" />
+      <meta
+        property="og:title"
+        content="Keep Da Change: Tip Calculator Web App"
+      />
+      <meta
+        property="og:description"
+        content="You ever need to figure out the tip on a night out? well now you can with this cool tip calculator!"
+      />
+      <meta property="og:image" content="https://www.keepdachange.app" />
       <h1 className="tip-title">
         <i className="lni lni-money-location"></i> Tip Calculator
       </h1>
