@@ -46,6 +46,13 @@ body {
   flex-direction: row;
   margin: 0 0.5rem;
 }
+/* class for the loading animations */
+.loader-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15rem;
+}
 .display-none {
   display: none;
 }
