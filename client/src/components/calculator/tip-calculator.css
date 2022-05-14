@@ -85,11 +85,21 @@
   background-color: var(--fourth-color);
   border: 1px solid var(--accent-white);
 }
+/* if the button was clicked */
 .clicked {
   border: 1px solid rgb(2, 255, 2);
 }
+.clicked:hover {
+  border: 1px solid rgb(2, 255, 2);
+  background-color: rgba(101, 245, 101, 0.712);
+  color: var(--accent-black);
+}
+/* if button was not clicked */
 .not-clicked {
-  border: 1px solid var(--accent-error);
+  border: 1px solid var(--accent-lighter);
+  color: var(--accent-black);
+  background-color: rgb(204, 185, 207);
+  pointer-events: none;
 }
 /* just a little add on for the submit button for the tip */
 .submit-tip {
