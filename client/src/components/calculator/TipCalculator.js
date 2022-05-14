@@ -264,6 +264,16 @@ const TipCalculator = () => {
               <p className="results-text">${resultAmount.total}</p>
             )
           ) : null}
+          {submit ? (
+            <button
+              className="submit-btn"
+              onClick={() => {
+                window.location.reload(false);
+              }}
+            >
+              Tip Again?
+            </button>
+          ) : null}
         </div>
       </div>
     </>
