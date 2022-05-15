@@ -136,7 +136,21 @@ const TipCalculator = () => {
       <h1 className="tip-title">
         <i className="lni lni-money-location"></i> Tip Calculator
       </h1>
-      <div className="tip-calculator-container">
+      <div
+        className="tip-calculator-container"
+        itemscope
+        itemtype="http://schema.org/Article"
+      >
+        {/* google search meta data better to have in the body of the page I am trying to target */}
+        <meta itemprop="name" content="Tip Calculator Web App" />
+        <meta
+          itemprop="description"
+          content="You ever need to figure out the tip on a night out? Well now you can with this cool tip calculator!"
+        />
+        <meta
+          itemprop="image"
+          content="http://keepdachange.app/favicon/android-chrome-512x512.png"
+        />
         <form className="tip-form-container" onSubmit={handleSubmit}>
           <label className="label-title"> Enter Your Bill Amount</label> <br />
           <input
