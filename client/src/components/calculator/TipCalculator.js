@@ -202,14 +202,14 @@ const TipCalculator = () => {
           <div className={group ? "display-none" : "group-question-container"}>
             <label className="label-title">In A Group?</label>
             <div className="row">
-              <span className="label-title">Yes</span>
+              <label className="label-title">Yes</label>
               <input
                 className="checkbox"
                 name="group"
                 type="checkbox"
                 onClick={handleGroup}
               />{" "}
-              <span className="label-title">No</span>
+              <label className="label-title">No</label>
               <input className="checkbox" name="nogroup" type="checkbox" />
             </div>
           </div>
