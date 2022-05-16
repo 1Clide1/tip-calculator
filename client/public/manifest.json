@@ -34,8 +34,8 @@
     }
   ],
   "description": "A simple app where you can find out how much you need to tip after a night of dinning out",
-  "start_url": "./",
-  "scope": ".",
+  "start_url": "https://keepdachange.app/",
+  "scope": "/",
   "orientation": "portrait-primary",
   "display": "standalone",
   "theme_color": "#ffabe1",
