@@ -76,16 +76,24 @@ console.log("service worker ready to go!");
 const CACHE_NAME = "tip-calculator-cache-v1";
 const URLS = [
   "/",
+  "/keepdachange.app",
   "/index.html",
   "static/js/main.chunk.js",
   "static/js/0.chunk.js",
   "/static/css/main.b9082901.chunk.css",
   "/static/js/2.c24141ae.chunk.js",
   "/static/js/main.61434094.chunk.js",
-  "/favicon/favicon.ico",
-  "/favicon/favicon-32x32.png",
-  "/manifest.json",
-  "/favicon/apple-touch-icon.png",
+  "/keepdachange.app/favicon/favicon.ico",
+  "/keepdachange.app/favicon/favicon-16x16.png",
+  "/keepdachange.app/favicon/favicon-32x32.png",
+  "/keepdachange.app/favicon/apple-touch-icon-iphone-60x60.png",
+  "/keepdachange.app/favicon/apple-touch-icon-ipad-76x76.png",
+  "/keepdachange.app/favicon/apple-touch-icon-iphone-retina-120x120.png",
+  "/keepdachange.app/favicon/apple-touch-icon-ipad-retina-152x152.png",
+  "/keepdachange.app/favicon/apple-touch-icon.png",
+  "/keepdachange.app/favicon/android-chrome-192x192.png",
+  "/keepdachange.app/favicon/android-chrome-512x512.png",
+  "/keepdachange.app/manifest.json",
 ];
 // Respond with cached resources
 self.addEventListener("fetch", function (e) {
