@@ -138,17 +138,17 @@ const TipCalculator = () => {
       </h1>
       <div
         className="tip-calculator-container"
-        itemscope
-        itemtype="http://schema.org/Article"
+        itemScope
+        itemType="http://schema.org/Article"
       >
         {/* google search meta data better to have in the body of the page I am trying to target */}
-        <meta itemprop="name" content="Tip Calculator Web App" />
+        <meta itemProp="name" content="Tip Calculator Web App" />
         <meta
-          itemprop="description"
+          itemProp="description"
           content="You ever need to figure out the tip on a night out? Well now you can with this cool tip calculator!"
         />
         <meta
-          itemprop="image"
+          itemProp="image"
           content="http://keepdachange.app/favicon/android-chrome-512x512.png"
         />
         <form className="tip-form-container" onSubmit={handleSubmit}>
