@@ -11,7 +11,7 @@ import { clientsClaim } from "workbox-core";
 import { ExpirationPlugin } from "workbox-expiration";
 import { precacheAndRoute, createHandlerBoundToURL } from "workbox-precaching";
 import { registerRoute } from "workbox-routing";
-import { StaleWhileRevalidate } from "workbox-strategies";
+import { StaleWhileRevalidate, CacheFirst } from "workbox-strategies";
 
 clientsClaim();
 
@@ -40,7 +40,7 @@ registerRoute(
     if (url.pathname.match(fileExtensionRegexp)) {
       return false;
     } // Return true to signal that we want to use the handler.
-
+    request.destination === "image", CacheFirst();
     return true;
   },
   createHandlerBoundToURL(process.env.PUBLIC_URL + "/index.html")
