@@ -49,6 +49,8 @@
   font-weight: 500;
   font-size: var(--font-size-500);
   background-color: var(--accent-light);
+  /* just incase for safari */
+  color: var(--fourth-color);
   border-radius: 0.8rem;
   padding: 0.3rem;
   margin-top: 0.5rem;
@@ -139,5 +141,8 @@
 @media screen and (max-width: 600px) {
   .group-text {
     font-size: var(--font-size-200);
+  }
+  .bill-input:focus {
+    outline: none;
   }
 }
