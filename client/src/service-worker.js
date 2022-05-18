@@ -42,9 +42,9 @@ registerRoute(
 // precache, in this case same-origin .png requests like those from in public/
 registerRoute(
   // Add in any other file extensions or routing criteria as needed.
-  ({ request, url }) =>
-    url.origin === self.location.origin && url.pathname.endsWith(".png"),
-  request.destination === "image",
+  ({ url, request }) =>
+    (url.origin === self.location.origin && url.pathname.endsWith(".png")) ||
+    request.destination === "image",
   new CacheFirst({
     cacheName: "images",
     plugins: [
