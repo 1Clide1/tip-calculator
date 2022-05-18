@@ -42,8 +42,7 @@
     {
       "src": "favicon/apple-touch-icon.png",
       "sizes": "180x180",
-      "type": "image/png",
-      "purpose": "any"
+      "type": "image/png"
     },
     {
       "src": "favicon/android-chrome-192x192.png",
@@ -53,9 +52,9 @@
     },
     {
       "src": "favicon/maskable_icon.png",
-      "sizes": "192x192",
+      "sizes": "276x276",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any"
     },
     {
       "src": "favicon/android-chrome-512x512.png",
