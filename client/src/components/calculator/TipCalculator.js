@@ -37,6 +37,7 @@ const TipCalculator = () => {
   const [twentyPercentBtnClicked, setTwentyPercentBtn] = useState(false);
   // check if the percent button states are false
   const [percentBtnNotClicked, setNotClicked] = useState(false);
+
   //   MUTATIONS
   // mutation to add tip history
   const [addTipHistory, { error }] = useMutation(ADD_TIP_HISTORY);
@@ -45,6 +46,7 @@ const TipCalculator = () => {
   const [addPercentage, { err }] = useMutation(ADD_PERCENTAGE);
 
   //   FUNCTIONS
+
   // handle input field
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -54,11 +56,12 @@ const TipCalculator = () => {
     });
     console.log(e.target.value);
   };
+
   //   function to setup the group form question
   const handleGroup = () => {
     setGroup(!group);
   };
-  console.log(group);
+
   // handle button values
   const handlePercentage = (e) => {
     const { value } = e.target;
@@ -66,7 +69,6 @@ const TipCalculator = () => {
       ...percentage,
       value,
     });
-    console.log(e.target.value);
     if (e.target.name === "ten-percent-btn") {
       setPercentBtn(!tenPercentBtnClicked);
     } else if (e.target.name === "fifteen-percent-btn") {
@@ -77,7 +79,7 @@ const TipCalculator = () => {
     // the rest of the buttons become unusable
     setNotClicked(!percentBtnNotClicked);
   };
-  // function
+
   // function to make the calculations
   const tipCalculator = async () => {
     if (group) {
@@ -131,10 +133,11 @@ const TipCalculator = () => {
   const resetTipForm = () => {
     // if group is true set it to false
     if (group === true) {
-      setGroup(group);
+      setGroup(!group);
     }
+
     // same thing if the percent buttons are true then set them back to false
-    else if (twentyPercentBtnClicked === true) {
+    if (twentyPercentBtnClicked === true) {
       // ! because since they are true now that will make it false
       setTwentyPercentBtn(!twentyPercentBtnClicked);
     } else if (fifteenPercentBtnClicked === true) {
@@ -142,11 +145,29 @@ const TipCalculator = () => {
     } else if (tenPercentBtnClicked === true) {
       setPercentBtn(!tenPercentBtnClicked);
     }
+
     // setting submit to false and percent button not clicked to false automatically because these will always be turned on to true
     setSubmit(!submit);
     setNotClicked(!percentBtnNotClicked);
-  };
+    // setting the form input state back to nothing right away because that needs to be empty after reset
+    setForm({
+      bill: "",
+      groupNum: "",
+    });
+    setPercentage({
+      value: "",
+    });
+    // get the yes and no checkbox to uncheck them
+    const yesCheckbox = document.getElementById("yes-checkbox");
+    const noCheckbox = document.getElementById("no-checkbox");
 
+    // if yes is checked uncheck it if yes isn't check then uncheck no
+    if (yesCheckbox.checked === true) {
+      yesCheckbox.checked = false;
+    } else {
+      noCheckbox.checked = false;
+    }
+  };
   return (
     <>
       <h1 className="tip-title">
@@ -234,6 +255,7 @@ const TipCalculator = () => {
             <div className="row">
               <label className="label-title">Yes</label>
               <input
+                id="yes-checkbox"
                 className="checkbox"
                 name="group"
                 type="checkbox"
@@ -241,6 +263,7 @@ const TipCalculator = () => {
               />{" "}
               <label className="label-title">No</label>
               <input
+                id="no-checkbox"
                 className="checkbox"
                 name="nogroup"
                 type="checkbox"
