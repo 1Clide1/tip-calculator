@@ -20,7 +20,7 @@ import ProfilePage from "./pages/ProfilePage";
 // import components
 import Navbar from "./components/navbar/Navbar";
 // import css for the main app
-import "./app.css";
+import "./App.css";
 
 function App() {
   // creates the link for gql
