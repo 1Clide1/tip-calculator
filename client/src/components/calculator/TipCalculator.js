@@ -120,16 +120,32 @@ const TipCalculator = () => {
     }
   };
 
+  // function to handle submiting
   const handleSubmit = async (e) => {
     e.preventDefault();
     await tipCalculator();
     await setSubmit(true);
   };
 
-  // const changeBtnStyle = (e) => {
-  //   console.log(e.target.value);
-  //   if (e.target.value === e.target.value) setBtnClicked(!btnClicked);
-  // };
+  // function to reset states after submit that way you can submit again without a page reload
+  const resetTipForm = () => {
+    // if group is true set it to false
+    if (group === true) {
+      setGroup(group);
+    }
+    // same thing if the percent buttons are true then set them back to false
+    else if (twentyPercentBtnClicked === true) {
+      // ! because since they are true now that will make it false
+      setTwentyPercentBtn(!twentyPercentBtnClicked);
+    } else if (fifteenPercentBtnClicked === true) {
+      setFifteenPercentBtn(!fifteenPercentBtnClicked);
+    } else if (tenPercentBtnClicked === true) {
+      setPercentBtn(!tenPercentBtnClicked);
+    }
+    // setting submit to false and percent button not clicked to false automatically because these will always be turned on to true
+    setSubmit(!submit);
+    setNotClicked(!percentBtnNotClicked);
+  };
 
   return (
     <>
@@ -224,7 +240,13 @@ const TipCalculator = () => {
                 onClick={handleGroup}
               />{" "}
               <label className="label-title">No</label>
-              <input className="checkbox" name="nogroup" type="checkbox" />
+              <input
+                className="checkbox"
+                name="nogroup"
+                type="checkbox"
+                // if you did not hit yes then you need to hit no before you can submit
+                required={group ? false : true}
+              />
             </div>
           </div>
           {group ? (
@@ -279,12 +301,7 @@ const TipCalculator = () => {
             )
           ) : null}
           {submit ? (
-            <button
-              className="submit-btn"
-              onClick={() => {
-                window.location.reload(false);
-              }}
-            >
+            <button className="submit-btn" onClick={resetTipForm}>
               Tip Again?
             </button>
           ) : null}
