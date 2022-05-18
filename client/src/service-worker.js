@@ -12,6 +12,7 @@ import { ExpirationPlugin } from "workbox-expiration";
 import { precacheAndRoute, createHandlerBoundToURL } from "workbox-precaching";
 import { registerRoute } from "workbox-routing";
 import { StaleWhileRevalidate, CacheFirst } from "workbox-strategies";
+import { CacheableResponsePlugin } from "workbox-cacheable-response";
 
 clientsClaim();
 
@@ -40,7 +41,6 @@ registerRoute(
     if (url.pathname.match(fileExtensionRegexp)) {
       return false;
     } // Return true to signal that we want to use the handler.
-    request.destination === "image", CacheFirst();
     return true;
   },
   createHandlerBoundToURL(process.env.PUBLIC_URL + "/index.html")
@@ -51,13 +51,17 @@ registerRoute(
 registerRoute(
   // Add in any other file extensions or routing criteria as needed.
   ({ url }) =>
-    url.origin === self.location.origin && url.pathname.endsWith(".png"), // Customize this strategy as needed, e.g., by changing to CacheFirst.
-  new StaleWhileRevalidate({
+    url.origin === self.location.origin && url.pathname.endsWith(".png"),
+  new CacheFirst({
     cacheName: "images",
     plugins: [
       // Ensure that once this runtime cache reaches a maximum size the
       // least-recently used images are removed.
       new ExpirationPlugin({ maxEntries: 50 }),
+
+      new CacheableResponsePlugin({
+        statuses: [200],
+      }),
     ],
   })
 );
@@ -71,7 +75,7 @@ self.addEventListener("message", (event) => {
 });
 
 // Any other custom service worker logic can go here.
-console.log("service worker ready to go!");
+console.log("yurr service worker ready to go!");
 // naming the cache and data
 const CACHE_NAME = "tip-calculator-cache-v1";
 const URLS = [
