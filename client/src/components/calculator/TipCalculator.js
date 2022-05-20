@@ -289,7 +289,9 @@ const TipCalculator = () => {
               />
             </>
           ) : null}
-          <input className="submit-btn submit-tip" type="submit" />
+          <button className="submit-btn submit-tip" type="submit">
+            Get Your Tip!
+          </button>
         </form>
         <div className="result-container">
           {group ? (

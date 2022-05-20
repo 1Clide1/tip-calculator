@@ -64,6 +64,7 @@
   border: 1px solid var(--accent-black);
   color: var(--fourth-color);
   background-color: var(--accent-lighter);
+  border-radius: 0 0.5rem;
 }
 /* focus for the input */
 .bill-input:focus {
@@ -80,6 +81,7 @@
   border: 1px solid var(--accent-black);
   color: var(--fourth-color);
   background-color: var(--accent-lighter);
+  border-radius: 0 0.5rem;
 }
 /* hover for percent btn */
 .percent-btn:hover {
