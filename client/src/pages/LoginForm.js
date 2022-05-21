@@ -75,7 +75,7 @@ const LoginForm = () => {
       {/* if the sign up has an error it will display this instead */}
       {error && (
         <div className="error-container">
-          <i class="lni lni-sad error-icon"></i>
+          <i className="lni lni-sad error-icon"></i>
           <p className="error-title">
             Oops, the login didn't work, might want to try it again.
           </p>
