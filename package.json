@@ -1,5 +1,5 @@
 {
-  "name": "tip-calculator",
+  "name": "keep-da-change-tip-calculator",
   "version": "1.0.0",
   "description": "this is an app where you can figure out how much tip you want to pay after a night or day out dining",
   "main": "server/server.js",
