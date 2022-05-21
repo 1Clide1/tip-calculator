@@ -15,14 +15,16 @@ const Navbar = () => {
   const closeMenu = () => {
     setClick(!clicked);
   };
-  // creating a refrence
-  let domNode = useRef();
   // custom hook to close mobile menu
   const useClickOutside = () => {
+    // creating a refrence
+    let domNode = useRef();
     useEffect(() => {
       let handler = (e) => {
         if (!domNode.current?.contains(e.target)) {
-          closeMenu();
+          setClick(false);
+        } else {
+          return null;
         }
       };
       document.addEventListener("mousedown", handler);
@@ -32,7 +34,7 @@ const Navbar = () => {
     });
     return domNode;
   };
-  domNode = useClickOutside(() => {
+  let domNode = useClickOutside(() => {
     closeMenu();
   });
   return (
