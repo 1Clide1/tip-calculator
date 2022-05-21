@@ -1,5 +1,5 @@
 // import section
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { mainNavItems } from "./navItems";
 import Auth from "../../utils/auth";
@@ -15,9 +15,29 @@ const Navbar = () => {
   const closeMenu = () => {
     setClick(!clicked);
   };
+  // creating a refrence
+  let domNode = useRef();
+  // custom hook to close mobile menu
+  const useClickOutside = () => {
+    useEffect(() => {
+      let handler = (e) => {
+        if (!domNode.current?.contains(e.target)) {
+          closeMenu();
+        }
+      };
+      document.addEventListener("mousedown", handler);
+      return () => {
+        document.removeEventListener("mousedown", handler);
+      };
+    });
+    return domNode;
+  };
+  domNode = useClickOutside(() => {
+    closeMenu();
+  });
   return (
     <>
-      <nav className="navbar-container">
+      <nav ref={domNode} className="navbar-container">
         {/* menu icon for the website */}
         <div className="menu-icon" onClick={handleClick}>
           <i className={clicked ? "lni lni-cross-circle" : "lni lni-menu"}></i>
