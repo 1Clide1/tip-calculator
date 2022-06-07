@@ -6,7 +6,7 @@ import TipCalculator from "../components/calculator/TipCalculator";
 const Home = () => {
   return (
     <>
-      {/* google search meta data better to have in the body of the page I am trying to target */}
+      {/* google search meta data  */}
       <meta itemProp="name" content="Tip Calculator Web App" />
       <meta
         itemProp="description"

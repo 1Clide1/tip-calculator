@@ -92,6 +92,7 @@
     opacity: 1;
   }
 }
+/* for moblie css */
 /* mobile input fix */
 @media screen and (max-width: 600px) {
   .form-input {
