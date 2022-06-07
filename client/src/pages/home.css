@@ -1,0 +1,6 @@
+/* fix mobile input */
+@media screen and (max-width: 600px) {
+  .bill-input {
+    font-size: var(--font-size-300);
+  }
+}
