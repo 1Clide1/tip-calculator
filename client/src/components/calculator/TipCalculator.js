@@ -283,44 +283,45 @@ const TipCalculator = () => {
             Get Your Tip!
           </button>
         </form>
-        <div className="result-container">
-          {group ? (
-            <p className="results-text">Your group's tips are:</p>
-          ) : (
-            <p className="results-text">Your tip is:</p>
-          )}
-          {group ? (
-            <p className="results-text group-text">*per-person*</p>
-          ) : null}
-          {submit ? (
-            group ? (
-              <p className="results-text">{resultAmount.groupTip}</p>
-            ) : (
-              <p className="results-text">${resultAmount.tip}</p>
-            )
-          ) : null}
-          {group ? (
-            <p className="results-text">Your group's total is:</p>
-          ) : (
-            <p className="results-text">Your total is:</p>
-          )}
-
-          {group ? (
-            <p className="results-text group-text">*per-person*</p>
-          ) : null}
-          {submit ? (
-            group ? (
-              <p className="results-text">{resultAmount.groupTotal}</p>
-            ) : (
-              <p className="results-text">${resultAmount.total}</p>
-            )
-          ) : null}
-          {submit ? (
-            <button className="submit-btn" onClick={resetTipForm}>
-              Tip Again?
-            </button>
-          ) : null}
-        </div>
+        {submit ? (
+          <div className="result-bg">
+            <div className="result-container">
+              {submit ? (
+                group ? (
+                  <div>
+                    <p className="results-text">Your group's tips are:</p>
+                    <p className="results-text group-text">*per-person*</p>
+                    <p className="results-text">{resultAmount.groupTip}</p>
+                  </div>
+                ) : (
+                  <div>
+                    <p className="results-text">Your tip is:</p>
+                    <p className="results-text">${resultAmount.tip}</p>
+                  </div>
+                )
+              ) : null}
+              {submit ? (
+                group ? (
+                  <div>
+                    <p className="results-text">Your group's total is:</p>
+                    <p className="results-text group-text">*per-person*</p>
+                    <p className="results-text">{resultAmount.groupTotal}</p>
+                  </div>
+                ) : (
+                  <div>
+                    <p className="results-text">Your total is:</p>
+                    <p className="results-text">${resultAmount.total}</p>
+                  </div>
+                )
+              ) : null}
+              {submit ? (
+                <button className="submit-btn" onClick={resetTipForm}>
+                  Tip Again?
+                </button>
+              ) : null}
+            </div>
+          </div>
+        ) : null}
       </div>
     </>
   );

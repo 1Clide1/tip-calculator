@@ -34,6 +34,34 @@
   align-items: center;
   text-align: center;
 }
+/* background for the result container */
+.result-bg {
+  position: absolute;
+  /* had to specify the postion to make sure the background was in the center */
+  /* more specifically the bottom postion since that was the one being affected */
+  bottom: 0;
+  z-index: 2;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.74);
+}
+/* container for the results */
+.result-container {
+  position: absolute;
+  bottom: 50%;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  text-align: center;
+  justify-content: center;
+  width: 50%;
+  height: auto;
+  margin-inline: auto;
+  border: 1px solid var(--third-color);
+  border-radius: 5px;
+  box-shadow: 10px 10px 5px rgba(15, 15, 15, 0.1);
+  background-color: var(--secondary-color);
+}
 /* total amount of tip $ you seen when you submit */
 .results-text {
   display: flex;
