@@ -286,6 +286,9 @@ const TipCalculator = () => {
         {submit ? (
           <div className="result-bg">
             <div className="result-container">
+              <span className="exit-icon">
+                <i className="lni lni-cross-circle " onClick={resetTipForm}></i>
+              </span>
               {submit ? (
                 group ? (
                   <div>
