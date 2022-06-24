@@ -397,14 +397,12 @@ const TipCalculator = () => {
                   : "warning-modal"
               }
             >
-              <p className="results-text">
-                Are you sure you want to close the results?
-              </p>
+              <p className="results-text">You sure you wanna close it?</p>
               <button className="submit-btn" onClick={resetTipForm}>
-                Yes
+                Yeah
               </button>
               <button className="submit-btn" onClick={RevertWarning}>
-                No
+                Nah
               </button>
             </div>
           ) : null
