@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Auth from "../../utils/auth";
 import { useMutation } from "@apollo/client";
 import { ADD_TIP_HISTORY, ADD_PERCENTAGE } from "../../utils/mutations";
@@ -35,8 +35,18 @@ const TipCalculator = () => {
   const [tenPercentBtnClicked, setPercentBtn] = useState(false);
   const [fifteenPercentBtnClicked, setFifteenPercentBtn] = useState(false);
   const [twentyPercentBtnClicked, setTwentyPercentBtn] = useState(false);
+
   // check if the percent button states are false
   const [percentBtnNotClicked, setNotClicked] = useState(false);
+
+  // state for if user clicks the result bg to close the results container
+  const [clickedResultBG, setClickedResultBG] = useState(false);
+
+  // counter that way the user can only click once to get the warning modal
+  let [clickedResultBGCounter, setClickedResultBGCounter] = useState(0);
+
+  // state to start the warning modal
+  const [warningModal, setWarningModal] = useState(false);
 
   //   MUTATIONS
   // mutation to add tip history
@@ -167,6 +177,52 @@ const TipCalculator = () => {
     } else {
       noCheckbox.checked = false;
     }
+    if (clickedResultBG === true) {
+      setClickedResultBG(false);
+    } else if (setWarningModal === true) {
+      setWarningModal(false);
+    }
+    if (clickedResultBGCounter === 1) {
+      console.log(`counter is ${clickedResultBGCounter}`);
+      setClickedResultBGCounter(--clickedResultBGCounter);
+    }
+  };
+
+  // if user clicks the result bg then they will be able to close out of the result container modal
+  const ClickToCloseModal = () => {
+    let clickedBG = useRef();
+    useEffect(() => {
+      let startWarningModal = (e) => {
+        if (submit === true) {
+          if (!clickedBG.current?.contains(e.target)) {
+            setClickedResultBG(!clickedResultBG);
+            setWarningModal(true);
+            setClickedResultBGCounter(++clickedResultBGCounter);
+            console.log(clickedResultBGCounter, clickedResultBG);
+          } else {
+          }
+          return null;
+        }
+      };
+      // basically makes it happen only once that way the user can not just keep turning on and off this feature
+      if (clickedResultBGCounter >= 1) {
+        return null;
+      } else {
+        document.addEventListener("click", startWarningModal);
+      }
+      return () => {
+        document.removeEventListener("click", startWarningModal);
+      };
+    });
+    return clickedBG;
+  };
+  // this starts the function above
+  let clickedBG = ClickToCloseModal();
+
+  // function if the user clicks the no button on the warning modal
+  const RevertWarning = () => {
+    setClickedResultBG(false);
+    setClickedResultBGCounter(0);
   };
   return (
     <>
@@ -285,7 +341,14 @@ const TipCalculator = () => {
         </form>
         {submit ? (
           <div className="result-bg">
-            <div className="result-container">
+            <div
+              ref={clickedBG}
+              className={
+                clickedResultBG === true
+                  ? "result-container active"
+                  : "result-container"
+              }
+            >
               <span className="exit-icon">
                 <i className="lni lni-cross-circle " onClick={resetTipForm}></i>
               </span>
@@ -324,6 +387,27 @@ const TipCalculator = () => {
               ) : null}
             </div>
           </div>
+        ) : null}
+        {submit ? (
+          warningModal === true ? (
+            <div
+              className={
+                clickedResultBG === false
+                  ? "warning-modal active"
+                  : "warning-modal"
+              }
+            >
+              <p className="results-text">
+                Are you sure you want to close the results?
+              </p>
+              <button className="submit-btn" onClick={resetTipForm}>
+                Yes
+              </button>
+              <button className="submit-btn" onClick={RevertWarning}>
+                No
+              </button>
+            </div>
+          ) : null
         ) : null}
       </div>
     </>

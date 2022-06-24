@@ -83,6 +83,23 @@
   background-color: var(--secondary-color);
   animation: result-container 150ms linear normal;
 }
+/* css for the warning modal */
+.warning-modal {
+  position: absolute;
+  bottom: 50%;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  text-align: center;
+  justify-content: center;
+  width: 50%;
+  height: auto;
+  margin-inline: auto;
+  border: 1px solid var(--third-color);
+  border-radius: 5px;
+  background-color: var(--secondary-color);
+  animation: result-container 150ms linear normal;
+}
 /* icon to exit result container */
 .exit-icon {
   display: flex;
@@ -97,16 +114,17 @@
 /* animation for the pink box */
 @keyframes result-container {
   0% {
-    /* opacity: 0; */
+    opacity: 0;
     backdrop-filter: blur(5px);
     transform: translateY(500%);
     transform: scale(5%);
   }
   50% {
+    opacity: 0.7;
     transform: scale(50%);
   }
   100% {
-    /* opacity: 1; */
+    opacity: 1;
     transform: scale(0);
     backdrop-filter: blur(0px);
     transform: translateY(0);
@@ -204,6 +222,21 @@
 }
 .checkbox:hover {
   accent-color: var(--accent-lighter);
+}
+/* if clicked result bg then result container will become active or invisible */
+.active {
+  display: none;
+  animation: active 100ms linear normal;
+  transition: ease-out;
+}
+/* animation for the active class */
+@keyframes active {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 @media screen and (max-width: 200px) {
   .tip-title {
