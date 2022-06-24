@@ -223,12 +223,15 @@
 .checkbox:hover {
   accent-color: var(--accent-lighter);
 }
+
 /* if clicked result bg then result container will become active or invisible */
+/* made this a universal class for the result modal and the warning modal that way they can transition between being visible or not*/
 .active {
   display: none;
   animation: active 100ms linear normal;
   transition: ease-out;
 }
+
 /* animation for the active class */
 @keyframes active {
   0% {

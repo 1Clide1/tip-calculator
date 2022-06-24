@@ -34,9 +34,11 @@ const Navbar = () => {
     });
     return domNode;
   };
+
   let domNode = useClickOutside(() => {
     closeMenu();
   });
+  
   return (
     <>
       <nav ref={domNode} className="navbar-container">
