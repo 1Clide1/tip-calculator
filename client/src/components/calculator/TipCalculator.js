@@ -179,10 +179,11 @@ const TipCalculator = () => {
     }
     if (clickedResultBG === true) {
       setClickedResultBG(false);
-    } else if (setWarningModal === true) {
+    }
+    if (warningModal === true) {
       setWarningModal(false);
     }
-    if (clickedResultBGCounter === 1) {
+    if (clickedResultBGCounter >= 1) {
       console.log(`counter is ${clickedResultBGCounter}`);
       setClickedResultBGCounter(--clickedResultBGCounter);
     }
@@ -208,10 +209,10 @@ const TipCalculator = () => {
       if (clickedResultBGCounter >= 1) {
         return null;
       } else {
-        document.addEventListener("click", startWarningModal);
+        document.addEventListener("mousedown", startWarningModal);
       }
       return () => {
-        document.removeEventListener("click", startWarningModal);
+        document.removeEventListener("mousedown", startWarningModal);
       };
     });
     return clickedBG;
@@ -388,24 +389,22 @@ const TipCalculator = () => {
             </div>
           </div>
         ) : null}
-        {submit ? (
-          warningModal === true ? (
-            <div
-              className={
-                clickedResultBG === false
-                  ? "warning-modal active"
-                  : "warning-modal"
-              }
-            >
-              <p className="results-text">You sure you wanna close it?</p>
-              <button className="submit-btn" onClick={resetTipForm}>
-                Yeah
-              </button>
-              <button className="submit-btn" onClick={RevertWarning}>
-                Nah
-              </button>
-            </div>
-          ) : null
+        {warningModal === true ? (
+          <div
+            className={
+              clickedResultBG === false
+                ? "warning-modal active"
+                : "warning-modal"
+            }
+          >
+            <p className="results-text">You sure you wanna close it?</p>
+            <button className="submit-btn" onClick={resetTipForm}>
+              Yeah
+            </button>
+            <button className="submit-btn" onClick={RevertWarning}>
+              Nah
+            </button>
+          </div>
         ) : null}
       </div>
     </>
