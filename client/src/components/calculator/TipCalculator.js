@@ -341,6 +341,7 @@ const TipCalculator = () => {
           </button>
         </form>
         {submit ? (
+          // result bg is the blurred/darkened background
           <div className="result-bg">
             <div
               ref={clickedBG}
@@ -353,6 +354,9 @@ const TipCalculator = () => {
               <span className="exit-icon">
                 <i className="lni lni-cross-circle " onClick={resetTipForm}></i>
               </span>
+              {/* down below are where the result modal is. 
+              basically this will create a modal where it is either the results for one person/user. 
+              or if it is the results for the user's group*/}
               {submit ? (
                 group ? (
                   <div>
@@ -389,6 +393,7 @@ const TipCalculator = () => {
             </div>
           </div>
         ) : null}
+        {/* this is the warning modal */}
         {warningModal === true ? (
           <div
             className={
@@ -397,7 +402,12 @@ const TipCalculator = () => {
                 : "warning-modal"
             }
           >
-            <p className="results-text">You sure you wanna close it?</p>
+            <i
+              className="lni lni-cross-circle exit-icon"
+              onClick={resetTipForm}
+            ></i>
+            <p className="label-title width-50 margin-in">Hold Up</p>
+            <p className="results-text">You sure you wanna close?</p>
             <button className="submit-btn" onClick={resetTipForm}>
               Yeah
             </button>
