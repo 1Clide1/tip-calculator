@@ -46,6 +46,18 @@ body {
   flex-direction: row;
   margin: 0 0.5rem;
 }
+.column {
+  display: flex;
+  flex-direction: column;
+}
+/* this is where the width is 50% */
+.width-50 {
+  width: 50%;
+}
+/* just for margin inline being out to help center things */
+.margin-in {
+  margin-inline: auto;
+}
 /* class for the loading animations */
 .loader-icon {
   display: flex;
