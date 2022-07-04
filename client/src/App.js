@@ -9,6 +9,9 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+// importing create context from react
+import { createContext } from "react";
+
 // import pages
 // home is where the tip calculator is
 import Home from "./pages/Home";
@@ -21,6 +24,10 @@ import ProfilePage from "./pages/ProfilePage";
 import Navbar from "./components/navbar/Navbar";
 // import css for the main app
 import "./app.css";
+
+// creating the theme selector context
+// starting it as nothing to in the future change the context to a theme
+const themeSelector = createContext(null);
 
 function App() {
   // creates the link for gql
@@ -44,23 +51,30 @@ function App() {
   });
   // have to wrap everything with the apollo provider to get graphql working
   return (
-    <ApolloProvider client={client}>
-      <Router>
-        <header className="nav-header">
-          <Navbar />
-        </header>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          {/* signup form */}
-          <Route exact path="/signup" component={SignupForm} />
-          {/* login form */}
-          <Route exact path="/login" component={LoginForm} />
-          {/* profile page */}
-          <Route exact path="/profile" component={ProfilePage} />
-          <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
-        </Switch>
-      </Router>
-    </ApolloProvider>
+    // wrapping the app with the theme selector context that way the whole app is affected
+    <themeSelector.Provider>
+      <div id="light">
+        <ApolloProvider client={client}>
+          <Router>
+            <header className="nav-header">
+              <Navbar />
+            </header>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              {/* signup form */}
+              <Route exact path="/signup" component={SignupForm} />
+              {/* login form */}
+              <Route exact path="/login" component={LoginForm} />
+              {/* profile page */}
+              <Route exact path="/profile" component={ProfilePage} />
+              <Route
+                render={() => <h1 className="display-2">Wrong page!</h1>}
+              />
+            </Switch>
+          </Router>
+        </ApolloProvider>
+      </div>
+    </themeSelector.Provider>
   );
 }
 
