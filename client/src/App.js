@@ -1,5 +1,10 @@
 // imports
 import React from "react";
+// import use state
+import { useState } from "react";
+// importing create context from react
+import { createContext } from "react";
+// import react router dom
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import graphql
 import {
@@ -9,8 +14,6 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-// importing create context from react
-import { createContext } from "react";
 
 // import pages
 // home is where the tip calculator is
@@ -49,11 +52,16 @@ function App() {
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),
   });
-  // have to wrap everything with the apollo provider to get graphql working
+
+  // creating a state for the theme selector text
+  // making sure to start with an initial value first
+  const [theme, setTheme] = useState("OG");
+
   return (
+    // have to wrap everything with the apollo provider to get graphql working
     // wrapping the app with the theme selector context that way the whole app is affected
-    <themeSelector.Provider>
-      <div id="light">
+    <themeSelector.Provider value={theme}>
+      <div id="OG">
         <ApolloProvider client={client}>
           <Router>
             <header className="nav-header">
