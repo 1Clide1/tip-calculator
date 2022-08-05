@@ -26,6 +26,9 @@
   background-color: var(--secondary-color);
   z-index: 1;
 }
+#dark .tip-calculator-container {
+  background-color: var(--dark-secondary);
+}
 /* container for just the form section */
 .tip-form-container {
   display: flex;
@@ -83,6 +86,10 @@
   background-color: var(--secondary-color);
   animation: result-container 150ms linear normal;
 }
+#dark,
+.result-container {
+  background-color: var(--dark-secondary);
+}
 /* css for the warning modal */
 .warning-modal {
   position: absolute;
@@ -99,6 +106,10 @@
   border-radius: 5px;
   background-color: var(--secondary-color);
   animation: result-container 150ms linear normal;
+}
+#dark,
+.warning-modal {
+  background-color: var(--dark-secondary);
 }
 /* icon to exit result container */
 .exit-icon {
@@ -152,6 +163,10 @@
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
+#dark .label-title {
+  background-color: var(--dark-primary);
+  color: var(--dark-text);
+}
 /* input for the bill amount */
 .bill-input {
   width: 100%;
@@ -179,11 +194,21 @@
   background-color: var(--accent-lighter);
   border-radius: 0 0.5rem;
 }
+
+#dark .percent-btn {
+  background-color: var(--dark-primary);
+  color: var(--dark-text);
+}
 /* hover for percent btn */
 .percent-btn:hover {
   color: var(--accent-lighter);
   background-color: var(--fourth-color);
   border: 1px solid var(--accent-white);
+}
+#dark .percent-btn:hover {
+  color: var(--dark-secondary);
+  background-color: var(--dark-third);
+  border: 1px solid var(--dark-fourth);
 }
 /* if the button was clicked */
 .clicked {
@@ -201,6 +226,9 @@
   color: var(--accent-black);
   background-color: rgb(204, 185, 207);
   pointer-events: none;
+}
+#dark .not-clicked {
+  background-color: grey;
 }
 /* just a little add on for the submit button for the tip */
 .submit-tip {
@@ -220,8 +248,15 @@
   width: 25px;
   accent-color: var(--fourth-color);
 }
+#dark .checkbox {
+  accent-color: var(--dark-third);
+}
 .checkbox:hover {
   accent-color: var(--accent-lighter);
+}
+
+#dark .checkbox:hover {
+  accent-color: var(--dark-fourth);
 }
 
 /* if clicked result bg then result container will become active or invisible */

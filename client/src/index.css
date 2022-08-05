@@ -12,10 +12,17 @@ html {
 /* root utility classes */
 :root {
   /* these are the main colors */
+  /* og colors */
   --primary-color: #ffe6e6;
   --secondary-color: #ffabe1;
   --third-color: #a685e2;
   --fourth-color: #6155a6;
+  /* dark mode colors */
+  --dark-primary: #1f1d36;
+  --dark-secondary: #3f3351;
+  --dark-third: #864879;
+  --dark-fourth: #864879;
+  --dark-text: #e9a6a6;
   /* accent colors that fit the main */
   --accent-light: rgb(255, 231, 248);
   --accent-lighter: rgb(252, 243, 249);
@@ -37,9 +44,20 @@ body {
   font-family: "Rubik", sans-serif;
   -webkit-font-smoothing: antialiased;
   background-color: var(--primary-color);
+  /* background-color: red; */
+}
+/* for original body colors */
+#og {
   color: var(--fourth-color);
 }
 
+/* testing for future dark mode */
+html #dark {
+  height: 100vh;
+  background-color: var(--dark-primary);
+  color: var(--dark-text);
+  color: var(--dark-text);
+}
 /* utility class */
 .row {
   display: flex;

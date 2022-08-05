@@ -55,6 +55,10 @@
   background-color: var(--accent-lighter);
   border-radius: 0 0.5rem;
 }
+#dark .submit-btn {
+  color: var(--dark-text);
+  background-color: var(--dark-primary);
+}
 
 .submit-btn:hover {
   color: var(--accent-lighter);
