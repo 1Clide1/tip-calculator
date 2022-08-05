@@ -10,6 +10,9 @@
   background: var(--secondary-color);
   backdrop-filter: blur(5px);
 }
+#dark .navbar-container {
+  background: var(--dark-secondary);
+}
 /* these are the list in the navbar */
 .navbar-links {
   padding: 0.5rem;
@@ -35,6 +38,10 @@
   font-size: 2rem;
   transition: 0.25s ease-in;
 }
+#dark .navbar-links,
+.menu-icon {
+  color: var(--dark-text);
+}
 
 /* media query for mobile menu */
 @media screen and (max-width: 587px) {
@@ -56,6 +63,10 @@
     backdrop-filter: blur(5px);
     box-shadow: 0 0px 20px rgba(0, 0, 0, 0.25);
     transition: all 0.25s ease-out;
+  }
+  #dark .nav-ul {
+    background: var(--dark-secondary);
+    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.582);
   }
   .nav-ul.active {
     border-radius: 2rem;
