@@ -1,9 +1,9 @@
 // imports
 import React from "react";
 // import use state
-import { useState } from "react";
-// importing create context from react
-import { createContext } from "react";
+// and importing create context from react
+import { useState, createContext } from "react";
+
 // import react router dom
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import graphql
@@ -54,21 +54,28 @@ function App() {
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),
   });
-
-  // creating a state for the theme selector text
-  // making sure to start with an initial value first
-  const [theme, setTheme] = useState("OG");
+  // state for the theme
+  const [theme, setTheme] = useState("og");
+  // creating a theme switcher function
+  const SwitchTheme = () => {
+    setTheme(theme === "og" ? "dark" : "og");
+  };
 
   return (
     // have to wrap everything with the apollo provider to get graphql working
     // wrapping the app with the theme selector context that way the whole app is affected
-    <themeSelector.Provider value={theme}>
-      <div id="OG">
+    // need to also deconstruct whatever you are trying to export through context api. so in this case a variable and a function that I can use where ever on the website
+    <themeSelector.Provider value={{ theme, SwitchTheme }}>
+      <div id={theme}>
         <ApolloProvider client={client}>
           <Router>
             <header className="nav-header">
               <Navbar />
             </header>
+            <label className="label-title"> Click To Change the Theme!</label>
+            <button className="percent-btn" onClick={SwitchTheme}>
+              Switch Theme
+            </button>
             <Switch>
               <Route exact path="/" component={Home} />
               {/* signup form */}
