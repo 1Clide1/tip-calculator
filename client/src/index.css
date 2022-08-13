@@ -44,10 +44,11 @@ body {
   font-family: "Rubik", sans-serif;
   -webkit-font-smoothing: antialiased;
   background-color: var(--primary-color);
+  color: var(--fourth-color);
   /* background-color: red; */
 }
 /* for original body colors */
-#og {
+html #og {
   color: var(--fourth-color);
 }
 
