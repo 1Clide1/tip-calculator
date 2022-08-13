@@ -2,7 +2,7 @@
 import React from "react";
 // import use state
 // and importing create context from react
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 
 // import react router dom
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -25,6 +25,8 @@ import LoginForm from "./pages/LoginForm";
 import ProfilePage from "./pages/ProfilePage";
 // import components
 import Navbar from "./components/navbar/Navbar";
+// import local storage util to save color theme
+import { saveColorTheme } from "./utils/localStorage";
 // import css for the main app
 import "./app.css";
 
@@ -58,15 +60,22 @@ function App() {
   const [theme, setTheme] = useState("og");
   // creating a theme switcher function
   const SwitchTheme = () => {
-    setTheme(theme === "og" ? "dark" : "og");
+    if (theme === "og") {
+      setTheme("dark");
+    } else {
+      setTheme("og");
+    }
+    saveColorTheme(theme);
+    console.log("color theme saved", `theme is ${theme}`);
   };
-
+  //var for the id
+  const savedTheme = JSON.parse(localStorage.getItem("color-theme", theme));
   return (
     // have to wrap everything with the apollo provider to get graphql working
     // wrapping the app with the theme selector context that way the whole app is affected
     // need to also deconstruct whatever you are trying to export through context api. so in this case a variable and a function that I can use where ever on the website
     <themeSelector.Provider value={{ theme, SwitchTheme }}>
-      <div id={theme}>
+      <div id={savedTheme}>
         <ApolloProvider client={client}>
           <Router>
             <header className="nav-header">
