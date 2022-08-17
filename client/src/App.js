@@ -56,26 +56,29 @@ function App() {
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),
   });
+  // Section for the theme switcher code
   // state for the theme
-  const [theme, setTheme] = useState("og");
+  // setted this 
+  let [theme, setTheme] = useState("og");
   // creating a theme switcher function
   const SwitchTheme = () => {
-    if (theme === "og") {
-      setTheme("dark");
-    } else {
-      setTheme("og");
-    }
+    setTheme(theme === "og" ? (theme = "dark") : (theme = "og"));
     saveColorTheme(theme);
     console.log("color theme saved", `theme is ${theme}`);
   };
-  //var for the id
-  const savedTheme = JSON.parse(localStorage.getItem("color-theme", theme));
+  // using use effect to set the saved theme from local storage and setting that to be the theme on the state called theme if that state changed
+  useEffect(() => {
+    //this represents the saved theme that will be display through the id tag in the html
+    const savedTheme = JSON.parse(localStorage.getItem("color-theme", theme));
+    setTheme(savedTheme);
+  }, [theme]);
   return (
     // have to wrap everything with the apollo provider to get graphql working
     // wrapping the app with the theme selector context that way the whole app is affected
     // need to also deconstruct whatever you are trying to export through context api. so in this case a variable and a function that I can use where ever on the website
     <themeSelector.Provider value={{ theme, SwitchTheme }}>
-      <div id={savedTheme}>
+      {/* using theme variable instead of using the theme saved from local storage because that lags behind and causes a glitch */}
+      <div id={theme}>
         <ApolloProvider client={client}>
           <Router>
             <header className="nav-header">
