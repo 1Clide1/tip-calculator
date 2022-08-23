@@ -32,7 +32,8 @@ import "./app.css";
 
 // creating the theme selector context
 // starting it as nothing to in the future change the context to a theme
-const themeSelector = createContext(null);
+// exporting that way I can use this context on another part of the app
+export const themeSelector = createContext(null);
 
 function App() {
   // creates the link for gql
@@ -58,7 +59,7 @@ function App() {
   });
   // Section for the theme switcher code
   // state for the theme
-  // setted this 
+  // setted this
   let [theme, setTheme] = useState("og");
   // creating a theme switcher function
   const SwitchTheme = () => {
@@ -76,7 +77,7 @@ function App() {
     // have to wrap everything with the apollo provider to get graphql working
     // wrapping the app with the theme selector context that way the whole app is affected
     // need to also deconstruct whatever you are trying to export through context api. so in this case a variable and a function that I can use where ever on the website
-    <themeSelector.Provider value={{ theme, SwitchTheme }}>
+    <themeSelector.Provider value={{ SwitchTheme }}>
       {/* using theme variable instead of using the theme saved from local storage because that lags behind and causes a glitch */}
       <div id={theme}>
         <ApolloProvider client={client}>
@@ -84,10 +85,6 @@ function App() {
             <header className="nav-header">
               <Navbar />
             </header>
-            <label className="label-title"> Click To Change the Theme!</label>
-            <button className="percent-btn" onClick={SwitchTheme}>
-              Switch Theme
-            </button>
             <Switch>
               <Route exact path="/" component={Home} />
               {/* signup form */}

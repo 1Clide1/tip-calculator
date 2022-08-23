@@ -1,8 +1,9 @@
 // import section
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { Link } from "react-router-dom";
 import { mainNavItems } from "./navItems";
 import Auth from "../../utils/auth";
+import { themeSelector } from "../../App";
 import "./navbar.css";
 
 const Navbar = () => {
@@ -38,7 +39,10 @@ const Navbar = () => {
   let domNode = useClickOutside(() => {
     closeMenu();
   });
-  
+
+  // getting switch theme from the theme selector context that I have created
+  const { SwitchTheme } = useContext(themeSelector);
+
   return (
     <>
       <nav ref={domNode} className="navbar-container">
@@ -67,6 +71,9 @@ const Navbar = () => {
           ) : (
             <> </>
           )}
+          <button className="percent-btn" onClick={SwitchTheme}>
+            Switch Theme
+          </button>
         </ul>
       </nav>
     </>
