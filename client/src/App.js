@@ -57,22 +57,26 @@ function App() {
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),
   });
+
   // Section for the theme switcher code
+
   // state for the theme
-  // setted this
   let [theme, setTheme] = useState("og");
+
   // creating a theme switcher function
   const SwitchTheme = () => {
     setTheme(theme === "og" ? (theme = "dark") : (theme = "og"));
     saveColorTheme(theme);
     console.log("color theme saved", `theme is ${theme}`);
   };
+
   // using use effect to set the saved theme from local storage and setting that to be the theme on the state called theme if that state changed
   useEffect(() => {
     //this represents the saved theme that will be display through the id tag in the html
     const savedTheme = JSON.parse(localStorage.getItem("color-theme", theme));
     setTheme(savedTheme);
   }, [theme]);
+
   return (
     // have to wrap everything with the apollo provider to get graphql working
     // wrapping the app with the theme selector context that way the whole app is affected
