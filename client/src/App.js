@@ -81,7 +81,7 @@ function App() {
     // have to wrap everything with the apollo provider to get graphql working
     // wrapping the app with the theme selector context that way the whole app is affected
     // need to also deconstruct whatever you are trying to export through context api. so in this case a variable and a function that I can use where ever on the website
-    <themeSelector.Provider value={{ SwitchTheme }}>
+    <themeSelector.Provider value={{ theme, SwitchTheme }}>
       {/* using theme variable instead of using the theme saved from local storage because that lags behind and causes a glitch */}
       <div id={theme}>
         <ApolloProvider client={client}>
