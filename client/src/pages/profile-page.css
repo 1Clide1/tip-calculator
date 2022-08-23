@@ -5,51 +5,81 @@
   text-align: center;
   justify-content: center;
   align-items: center;
-  background-color: var(--secondary-color);
   margin-top: 5rem;
   width: 80%;
   height: auto;
   padding: 0.5rem;
   margin-inline: auto;
   border-radius: 0.5rem;
-  border: 1px solid var(--third-color);
   box-shadow: 10px 10px 5px rgba(15, 15, 15, 0.1);
 }
+
+#og .profile-page-container {
+  background-color: var(--secondary-color);
+  border: 1px solid var(--third-color);
+}
+#dark .profile-page-container {
+  background-color: var(--dark-secondary);
+  border: 1px solid var(--dark-third);
+}
+
 /* title that for the user's tips */
 .profile-title {
   font-weight: 800;
   font-size: var(--font-size-800);
-  background-color: var(--accent-light);
   border-radius: 0.8rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
+#og .profile-title {
+  background-color: var(--accent-light);
+}
+#dark .profile-title {
+  background-color: var(--dark-primary);
+}
+
 /* title for the tip history div */
 .tip-history-title {
   font-size: var(--font-size-500);
   font-weight: 500;
-  background-color: var(--accent-light);
   border-radius: 0.3rem;
 }
+
+#og .tip-history-title {
+  background-color: var(--accent-light);
+}
+#dark .tip-history-title {
+  background-color: var(--dark-primary);
+}
+
 /* text for the tip counter */
 .tip-count {
   font-size: var(--font-size-400);
   font-weight: 400;
 }
+
 /* text for the tips from the tip history */
 .tips-text {
   font-size: var(--font-size-300);
   font-weight: 300;
 }
+
 /* title for the fun facts */
 .facts-title {
   font-weight: 800;
   font-size: var(--font-size-800);
-  background-color: var(--accent-light);
   border-radius: 0.8rem;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
 }
+
+#og .facts-title {
+  background-color: var(--accent-light);
+}
+#dark .facts-title {
+  background-color: var(--dark-primary);
+}
+
 /* the tip history div */
 .tip-history-container {
   width: 100%;
@@ -57,9 +87,16 @@
   border-radius: 0.5rem;
   overflow-y: auto;
   overflow-x: hidden;
-  background-color: var(--secondary-color);
   margin-bottom: 1rem;
 }
+
+#og .tip-history-container {
+  background-color: var(--secondary-color);
+}
+#dark .tip-history-container {
+  background-color: var(--dark-secondary);
+}
+
 /* div that contains all of the fun facts */
 .fun-facts-container {
   display: flex;
@@ -68,6 +105,7 @@
   justify-content: center;
   align-items: center;
 }
+
 /* text to see what users usually tip */
 .most-tipped-text {
   font-size: var(--font-size-500);

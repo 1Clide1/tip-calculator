@@ -57,7 +57,6 @@ html #dark {
   height: 100vh;
   background-color: var(--dark-primary);
   color: var(--dark-text);
-  color: var(--dark-text);
 }
 /* utility class */
 .row {

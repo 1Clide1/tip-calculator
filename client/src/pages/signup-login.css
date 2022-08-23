@@ -10,37 +10,68 @@
   height: auto;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  border: 1px solid var(--third-color);
   box-shadow: 10px 10px 5px rgba(15, 15, 15, 0.1);
+}
+
+/* original color theme colors */
+#og .form-container {
+  border: 1px solid var(--third-color);
   background-color: var(--secondary-color);
+}
+/* dark color theme  colors*/
+#dark .form-container {
+  border: 1px solid var(--dark-third);
+  background-color: var(--dark-secondary);
 }
 
 .form-header {
   width: 100%;
   margin-bottom: 0.3rem;
   border-radius: 0.3rem;
-  border: 0.5px solid var(--accent-white);
   font-weight: 800;
   font-size: var(--font-size-800);
+}
+
+#og .form-header {
+  border: 0.5px solid var(--accent-white);
   background-color: var(--accent-light);
 }
+#dark .form-header {
+  border: 0.5px solid var(--accent-black);
+  background-color: var(--dark-primary);
+}
+
 /* form labels are the the labels for the form inputs */
 .form-label {
   font-weight: 500;
   font-size: var(--font-size-500);
 }
+
 .form-input {
   width: 100%;
   padding: 0.3rem;
   margin-bottom: 0.2rem;
-  border: 1px solid var(--accent-black);
-  color: var(--fourth-color);
-  background-color: var(--accent-lighter);
   border-radius: 0 0.5rem;
 }
 
-.form-input:focus {
+/* original color theme colors */
+#og .form-input {
+  border: 1px solid var(--accent-black);
+  color: var(--fourth-color);
+  background-color: var(--accent-lighter);
+}
+/* dark theme colors */
+#dark .form-input {
+  border: 1px solid var(--accent-lighter);
+  color: var(--dark-text);
+  background-color: var(--dark-primary);
+}
+/* input focus colors */
+#og .form-input:focus {
   outline: 1px solid var(--third-color);
+}
+#dark .form-input:focus {
+  outline: 1px solid var(--dark-third);
 }
 
 .submit-btn {
@@ -50,20 +81,27 @@
   cursor: pointer;
   font-size: var(--font-size-500);
   font-weight: 500;
+  border-radius: 0 0.5rem;
+}
+
+#og .submit-btn {
   border: 1px solid var(--accent-black);
   color: var(--fourth-color);
   background-color: var(--accent-lighter);
-  border-radius: 0 0.5rem;
 }
 #dark .submit-btn {
   color: var(--dark-text);
   background-color: var(--dark-primary);
 }
 
-.submit-btn:hover {
+#og .submit-btn:hover {
   color: var(--accent-lighter);
   background-color: var(--fourth-color);
   border: 1px solid var(--accent-black);
+}
+#dark .submit-btn:hover {
+  color: var(--dark-primary);
+  background-color: var(--dark-fourth);
   border: 1px solid var(--accent-white);
 }
 

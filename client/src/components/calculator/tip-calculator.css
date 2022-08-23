@@ -21,14 +21,18 @@
   margin-inline: auto;
   width: 70%;
   height: auto;
-  border: 1px solid var(--third-color);
   box-shadow: 10px 10px 5px rgba(15, 15, 15, 0.1);
-  background-color: var(--secondary-color);
   z-index: 1;
+}
+#og .tip-calculator-container {
+  border: 1px solid var(--third-color);
+  background-color: var(--secondary-color);
 }
 #dark .tip-calculator-container {
   background-color: var(--dark-secondary);
+  border: 1px solid var(--dark-third);
 }
+
 /* container for just the form section */
 .tip-form-container {
   display: flex;
@@ -37,6 +41,7 @@
   align-items: center;
   text-align: center;
 }
+
 /* background for the result container */
 .result-bg {
   position: absolute;
@@ -50,6 +55,7 @@
   backdrop-filter: blur(5px);
   animation: result-bg-animation 100ms ease-in normal;
 }
+
 /* animation for the result bg to fade it in */
 @keyframes result-bg-animation {
   0% {
@@ -68,6 +74,7 @@
     opacity: 1;
   }
 }
+
 /* container for the results */
 .result-container {
   position: absolute;
@@ -80,16 +87,20 @@
   width: 50%;
   height: auto;
   margin-inline: auto;
-  border: 1px solid var(--third-color);
   border-radius: 5px;
   box-shadow: 10px 10px 5px rgba(15, 15, 15, 0.1);
-  background-color: var(--secondary-color);
   animation: result-container 150ms linear normal;
 }
-#dark,
-.result-container {
+
+#og .result-container {
+  border: 1px solid var(--third-color);
+  background-color: var(--secondary-color);
+}
+#dark .result-container {
+  border: 1px solid var(--dark-third);
   background-color: var(--dark-secondary);
 }
+
 /* css for the warning modal */
 .warning-modal {
   position: absolute;
@@ -102,15 +113,19 @@
   width: 50%;
   height: auto;
   margin-inline: auto;
-  border: 1px solid var(--third-color);
   border-radius: 5px;
-  background-color: var(--secondary-color);
   animation: result-container 150ms linear normal;
 }
-#dark,
-.warning-modal {
+
+#og .warning-modal {
+  border: 1px solid var(--third-color);
+  background-color: var(--secondary-color);
+}
+#dark .warning-modal {
+  border: 1px solid var(--dark-third);
   background-color: var(--dark-secondary);
 }
+
 /* icon to exit result container */
 .exit-icon {
   display: flex;
@@ -118,10 +133,16 @@
   font-size: var(--font-size-500);
   width: auto;
 }
-.exit-icon:hover {
+
+#og .exit-icon:hover {
   cursor: pointer;
   color: var(--accent-black);
 }
+#dark .exit-icon:hover {
+  cursor: pointer;
+  color: var(--accent-white);
+}
+
 /* animation for the pink box */
 @keyframes result-container {
   0% {
@@ -141,46 +162,64 @@
     transform: translateY(0);
   }
 }
+
 /* total amount of tip $ you seen when you submit */
 .results-text {
   display: flex;
   flex-direction: column;
 }
+
 /* for the group per-person label to let you know that it is per person */
 .group-text {
   font-size: var(--font-size-300);
   font-weight: 800;
 }
+
 /* for the labels on the calculator form */
 .label-title {
   font-weight: 500;
   font-size: var(--font-size-500);
-  background-color: var(--accent-light);
-  /* just incase for safari */
-  color: var(--fourth-color);
   border-radius: 0.8rem;
   padding: 0.3rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
+
+#og .label-title {
+  color: var(--fourth-color);
+  background-color: var(--accent-light);
+}
 #dark .label-title {
   background-color: var(--dark-primary);
   color: var(--dark-text);
 }
+
 /* input for the bill amount */
 .bill-input {
   width: 100%;
   padding: 0.3rem;
   margin-bottom: 0.2rem;
+  border-radius: 0 0.5rem;
+}
+#og .bill-input {
   border: 1px solid var(--accent-black);
   color: var(--fourth-color);
   background-color: var(--accent-lighter);
-  border-radius: 0 0.5rem;
 }
-/* focus for the input */
-.bill-input:focus {
+#dark .bill-input {
+  border: 1px solid var(--accent-lighter);
+  color: var(--dark-text);
+  background-color: var(--dark-primary);
+}
+
+/* colors for the bill input's focus */
+#og .bill-input:focus {
   outline: 1px solid var(--third-color);
 }
+#dark .bill-input:focus {
+  outline: 1px solid var(--dark-third);
+}
+
 /* buttons for the percentage */
 .percent-btn {
   width: 100%;
@@ -189,18 +228,22 @@
   cursor: pointer;
   font-size: var(--font-size-500);
   font-weight: 500;
-  border: 1px solid var(--accent-black);
-  color: var(--fourth-color);
-  background-color: var(--accent-lighter);
   border-radius: 0 0.5rem;
 }
 
+#og .percent-btn {
+  border: 1px solid var(--accent-black);
+  color: var(--fourth-color);
+  background-color: var(--accent-lighter);
+}
 #dark .percent-btn {
   background-color: var(--dark-primary);
   color: var(--dark-text);
+  border: 1px solid var(--accent-white);
 }
-/* hover for percent btn */
-.percent-btn:hover {
+
+/* colors of the percent btn hover*/
+#og .percent-btn:hover {
   color: var(--accent-lighter);
   background-color: var(--fourth-color);
   border: 1px solid var(--accent-white);
@@ -208,18 +251,21 @@
 #dark .percent-btn:hover {
   color: var(--dark-secondary);
   background-color: var(--dark-third);
-  border: 1px solid var(--dark-fourth);
+  border: 1px solid var(--accent-black);
 }
+
 /* if the button was clicked */
 .clicked {
   border: 1px solid rgb(2, 255, 2);
   pointer-events: none;
 }
+
 .clicked:hover {
   border: 1px solid rgb(2, 255, 2);
   background-color: rgba(101, 245, 101, 0.712);
   color: var(--accent-black);
 }
+
 /* if button was not clicked */
 .not-clicked {
   border: 1px solid var(--accent-lighter);
@@ -227,18 +273,22 @@
   background-color: rgb(204, 185, 207);
   pointer-events: none;
 }
+
 #dark .not-clicked {
   background-color: grey;
 }
+
 /* just a little add on for the submit button for the tip */
 .submit-tip {
   margin-bottom: 0.5rem;
 }
+
 /* css for the question container */
 .group-question-container {
   display: flex;
   flex-direction: column;
 }
+
 .checkbox {
   cursor: pointer;
   justify-content: center;
@@ -246,12 +296,15 @@
   margin-top: 1rem;
   height: 25px;
   width: 25px;
+}
+
+#og .checkbox {
   accent-color: var(--fourth-color);
 }
 #dark .checkbox {
-  accent-color: var(--dark-third);
+  accent-color: var(--dark-fourth);
 }
-.checkbox:hover {
+#og .checkbox:hover {
   accent-color: var(--accent-lighter);
 }
 
