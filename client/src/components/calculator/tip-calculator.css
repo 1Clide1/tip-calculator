@@ -23,11 +23,10 @@
   height: auto;
   box-shadow: 10px 10px 5px rgba(15, 15, 15, 0.1);
   z-index: 1;
-}
-#og .tip-calculator-container {
   border: 1px solid var(--third-color);
   background-color: var(--secondary-color);
 }
+
 #dark .tip-calculator-container {
   background-color: var(--dark-secondary);
   border: 1px solid var(--dark-third);
@@ -90,12 +89,10 @@
   border-radius: 5px;
   box-shadow: 10px 10px 5px rgba(15, 15, 15, 0.1);
   animation: result-container 150ms linear normal;
-}
-
-#og .result-container {
   border: 1px solid var(--third-color);
   background-color: var(--secondary-color);
 }
+
 #dark .result-container {
   border: 1px solid var(--dark-third);
   background-color: var(--dark-secondary);
@@ -115,12 +112,10 @@
   margin-inline: auto;
   border-radius: 5px;
   animation: result-container 150ms linear normal;
-}
-
-#og .warning-modal {
   border: 1px solid var(--third-color);
   background-color: var(--secondary-color);
 }
+
 #dark .warning-modal {
   border: 1px solid var(--dark-third);
   background-color: var(--dark-secondary);
@@ -134,10 +129,12 @@
   width: auto;
 }
 
-#og .exit-icon:hover {
+/* exit icon colors in their respective themes */
+.exit-icon:hover {
   cursor: pointer;
   color: var(--accent-black);
 }
+
 #dark .exit-icon:hover {
   cursor: pointer;
   color: var(--accent-white);
