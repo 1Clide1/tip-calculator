@@ -23,11 +23,10 @@
   height: auto;
   box-shadow: 10px 10px 5px rgba(15, 15, 15, 0.1);
   z-index: 1;
-}
-#og .tip-calculator-container {
   border: 1px solid var(--third-color);
   background-color: var(--secondary-color);
 }
+
 #dark .tip-calculator-container {
   background-color: var(--dark-secondary);
   border: 1px solid var(--dark-third);
@@ -90,12 +89,10 @@
   border-radius: 5px;
   box-shadow: 10px 10px 5px rgba(15, 15, 15, 0.1);
   animation: result-container 150ms linear normal;
-}
-
-#og .result-container {
   border: 1px solid var(--third-color);
   background-color: var(--secondary-color);
 }
+
 #dark .result-container {
   border: 1px solid var(--dark-third);
   background-color: var(--dark-secondary);
@@ -115,12 +112,10 @@
   margin-inline: auto;
   border-radius: 5px;
   animation: result-container 150ms linear normal;
-}
-
-#og .warning-modal {
   border: 1px solid var(--third-color);
   background-color: var(--secondary-color);
 }
+
 #dark .warning-modal {
   border: 1px solid var(--dark-third);
   background-color: var(--dark-secondary);
@@ -134,10 +129,12 @@
   width: auto;
 }
 
-#og .exit-icon:hover {
+/* exit icon colors in their respective themes */
+.exit-icon:hover {
   cursor: pointer;
   color: var(--accent-black);
 }
+
 #dark .exit-icon:hover {
   cursor: pointer;
   color: var(--accent-white);
@@ -183,12 +180,10 @@
   padding: 0.3rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
-}
-
-#og .label-title {
   color: var(--fourth-color);
   background-color: var(--accent-light);
 }
+
 #dark .label-title {
   background-color: var(--dark-primary);
   color: var(--dark-text);
@@ -200,12 +195,11 @@
   padding: 0.3rem;
   margin-bottom: 0.2rem;
   border-radius: 0 0.5rem;
-}
-#og .bill-input {
   border: 1px solid var(--accent-black);
   color: var(--fourth-color);
   background-color: var(--accent-lighter);
 }
+
 #dark .bill-input {
   border: 1px solid var(--accent-lighter);
   color: var(--dark-text);
@@ -213,7 +207,7 @@
 }
 
 /* colors for the bill input's focus */
-#og .bill-input:focus {
+.bill-input:focus {
   outline: 1px solid var(--third-color);
 }
 #dark .bill-input:focus {
@@ -229,13 +223,11 @@
   font-size: var(--font-size-500);
   font-weight: 500;
   border-radius: 0 0.5rem;
-}
-
-#og .percent-btn {
   border: 1px solid var(--accent-black);
   color: var(--fourth-color);
   background-color: var(--accent-lighter);
 }
+
 #dark .percent-btn {
   background-color: var(--dark-primary);
   color: var(--dark-text);
@@ -243,7 +235,7 @@
 }
 
 /* colors of the percent btn hover*/
-#og .percent-btn:hover {
+.percent-btn:hover {
   color: var(--accent-lighter);
   background-color: var(--fourth-color);
   border: 1px solid var(--accent-white);
@@ -296,15 +288,14 @@
   margin-top: 1rem;
   height: 25px;
   width: 25px;
-}
-
-#og .checkbox {
   accent-color: var(--fourth-color);
 }
+
 #dark .checkbox {
   accent-color: var(--dark-fourth);
 }
-#og .checkbox:hover {
+
+.checkbox:hover {
   accent-color: var(--accent-lighter);
 }
 

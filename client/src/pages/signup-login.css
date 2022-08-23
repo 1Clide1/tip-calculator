@@ -52,22 +52,20 @@
   padding: 0.3rem;
   margin-bottom: 0.2rem;
   border-radius: 0 0.5rem;
-}
-
-/* original color theme colors */
-#og .form-input {
   border: 1px solid var(--accent-black);
   color: var(--fourth-color);
   background-color: var(--accent-lighter);
 }
+
 /* dark theme colors */
 #dark .form-input {
   border: 1px solid var(--accent-lighter);
   color: var(--dark-text);
   background-color: var(--dark-primary);
 }
+
 /* input focus colors */
-#og .form-input:focus {
+.form-input:focus {
   outline: 1px solid var(--third-color);
 }
 #dark .form-input:focus {
@@ -82,19 +80,17 @@
   font-size: var(--font-size-500);
   font-weight: 500;
   border-radius: 0 0.5rem;
-}
-
-#og .submit-btn {
   border: 1px solid var(--accent-black);
   color: var(--fourth-color);
   background-color: var(--accent-lighter);
 }
+
 #dark .submit-btn {
   color: var(--dark-text);
   background-color: var(--dark-primary);
 }
 
-#og .submit-btn:hover {
+.submit-btn:hover {
   color: var(--accent-lighter);
   background-color: var(--fourth-color);
   border: 1px solid var(--accent-black);
