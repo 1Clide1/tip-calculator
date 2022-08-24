@@ -74,9 +74,13 @@ function App() {
   useEffect(() => {
     //this represents the saved theme that will be display through the id tag in the html
     const savedTheme = JSON.parse(localStorage.getItem("color-theme", theme));
-    setTheme(savedTheme);
+    // creating an if statement because savedTheme var gets saved before I click the switch theme button
+    if (savedTheme !== null) {
+      setTheme(savedTheme);
+    }
   }, [theme]);
 
+  console.log(`theme is ${theme}`);
   return (
     // have to wrap everything with the apollo provider to get graphql working
     // wrapping the app with the theme selector context that way the whole app is affected
