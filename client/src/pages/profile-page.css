@@ -11,9 +11,13 @@
   padding: 0.5rem;
   margin-inline: auto;
   border-radius: 0.5rem;
+  box-shadow: 10px 10px 5px rgba(15, 15, 15, 0.1);
+}
+
+/* theme colors for the profile page container */
+#og .profile-page-container {
   background-color: var(--secondary-color);
   border: 1px solid var(--third-color);
-  box-shadow: 10px 10px 5px rgba(15, 15, 15, 0.1);
 }
 
 #dark .profile-page-container {
@@ -28,6 +32,10 @@
   border-radius: 0.8rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+}
+
+/* theme colors for the profile page title */
+#og .profile-title {
   background-color: var(--accent-light);
 }
 
@@ -40,9 +48,12 @@
   font-size: var(--font-size-500);
   font-weight: 500;
   border-radius: 0.3rem;
-  background-color: var(--accent-light);
 }
 
+/* theme colors for the tip history title */
+#og .tip-history-title {
+  background-color: var(--accent-light);
+}
 #dark .tip-history-title {
   background-color: var(--dark-primary);
 }
@@ -66,6 +77,10 @@
   border-radius: 0.8rem;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
+}
+
+/* theme colors for the facts title */
+#og .facts-title {
   background-color: var(--accent-light);
 }
 
@@ -81,6 +96,10 @@
   overflow-y: auto;
   overflow-x: hidden;
   margin-bottom: 1rem;
+}
+
+/* theme colors for the tip history containers */
+#og .tip-history-container {
   background-color: var(--secondary-color);
 }
 

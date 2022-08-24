@@ -13,12 +13,12 @@
   box-shadow: 10px 10px 5px rgba(15, 15, 15, 0.1);
 }
 
-/* original color theme colors */
+/* theme colors for the sign up/login form container */
 #og .form-container {
   border: 1px solid var(--third-color);
   background-color: var(--secondary-color);
 }
-/* dark color theme  colors*/
+
 #dark .form-container {
   border: 1px solid var(--dark-third);
   background-color: var(--dark-secondary);
@@ -52,20 +52,23 @@
   padding: 0.3rem;
   margin-bottom: 0.2rem;
   border-radius: 0 0.5rem;
+}
+
+/* theme colors for the sigup/login input*/
+#og .form-input {
   border: 1px solid var(--accent-black);
   color: var(--fourth-color);
   background-color: var(--accent-lighter);
 }
 
-/* dark theme colors */
 #dark .form-input {
   border: 1px solid var(--accent-lighter);
   color: var(--dark-text);
   background-color: var(--dark-primary);
 }
 
-/* input focus colors */
-.form-input:focus {
+/* theme colors for input focus */
+#og .form-input:focus {
   outline: 1px solid var(--third-color);
 }
 #dark .form-input:focus {
@@ -89,12 +92,13 @@
   color: var(--dark-text);
   background-color: var(--dark-primary);
 }
-
-.submit-btn:hover {
+/* theme colors for the submit button's hover state */
+#og .submit-btn:hover {
   color: var(--accent-lighter);
   background-color: var(--fourth-color);
   border: 1px solid var(--accent-black);
 }
+
 #dark .submit-btn:hover {
   color: var(--dark-primary);
   background-color: var(--dark-fourth);
@@ -108,10 +112,19 @@
   margin-inline: auto;
   border-radius: 0.3rem;
   padding: 1rem;
+  animation: error-animation 150ms linear normal;
+}
+/* theme colors for error container */
+#og .error-container {
   border: 1px solid var(--accent-black);
   color: var(--accent-error);
   background-color: var(--fourth-color);
-  animation: error-animation 150ms linear normal;
+}
+
+#dark .error-container {
+  border: 1px solid var(--dark-third);
+  color: var(--accent-error);
+  background-color: var(--dark-primary);
 }
 
 .error-icon {

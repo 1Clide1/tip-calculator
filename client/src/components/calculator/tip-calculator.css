@@ -23,6 +23,9 @@
   height: auto;
   box-shadow: 10px 10px 5px rgba(15, 15, 15, 0.1);
   z-index: 1;
+}
+/* theme colors for the tip calculator container */
+#og .tip-calculator-container {
   border: 1px solid var(--third-color);
   background-color: var(--secondary-color);
 }
@@ -87,8 +90,11 @@
   height: auto;
   margin-inline: auto;
   border-radius: 5px;
-  box-shadow: 10px 10px 5px rgba(15, 15, 15, 0.1);
   animation: result-container 150ms linear normal;
+  box-shadow: 10px 10px 5px rgba(15, 15, 15, 0.1);
+}
+/* theme colors for result container */
+#og .result-container {
   border: 1px solid var(--third-color);
   background-color: var(--secondary-color);
 }
@@ -112,6 +118,9 @@
   margin-inline: auto;
   border-radius: 5px;
   animation: result-container 150ms linear normal;
+}
+/* theme colors for the warning modal */
+#og .warning-modal {
   border: 1px solid var(--third-color);
   background-color: var(--secondary-color);
 }
@@ -132,6 +141,9 @@
 /* exit icon colors in their respective themes */
 .exit-icon:hover {
   cursor: pointer;
+}
+/* theme colors for the exit icon's hover */
+#og .exit-icon:hover {
   color: var(--accent-black);
 }
 
@@ -180,10 +192,12 @@
   padding: 0.3rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+}
+
+#og .label-title {
   color: var(--fourth-color);
   background-color: var(--accent-light);
 }
-
 #dark .label-title {
   background-color: var(--dark-primary);
   color: var(--dark-text);
@@ -195,6 +209,9 @@
   padding: 0.3rem;
   margin-bottom: 0.2rem;
   border-radius: 0 0.5rem;
+}
+/* theme colors for the bill input */
+#og .bill-input {
   border: 1px solid var(--accent-black);
   color: var(--fourth-color);
   background-color: var(--accent-lighter);
@@ -206,8 +223,8 @@
   background-color: var(--dark-primary);
 }
 
-/* colors for the bill input's focus */
-.bill-input:focus {
+/* theme colors for the bill input's focus */
+#og .bill-input:focus {
   outline: 1px solid var(--third-color);
 }
 #dark .bill-input:focus {
@@ -223,6 +240,9 @@
   font-size: var(--font-size-500);
   font-weight: 500;
   border-radius: 0 0.5rem;
+}
+/* theme colors for the percent button */
+#og .percent-btn {
   border: 1px solid var(--accent-black);
   color: var(--fourth-color);
   background-color: var(--accent-lighter);
@@ -235,11 +255,12 @@
 }
 
 /* colors of the percent btn hover*/
-.percent-btn:hover {
+#og .percent-btn:hover {
   color: var(--accent-lighter);
   background-color: var(--fourth-color);
   border: 1px solid var(--accent-white);
 }
+
 #dark .percent-btn:hover {
   color: var(--dark-secondary);
   background-color: var(--dark-third);
@@ -248,25 +269,43 @@
 
 /* if the button was clicked */
 .clicked {
-  border: 1px solid rgb(2, 255, 2);
   pointer-events: none;
 }
+/* theme colors for clicked */
+#og .clicked {
+  border: 1px solid rgb(2, 255, 2);
+  color: rgb(0, 155, 0);
+}
 
-.clicked:hover {
+#dark .clicked {
+  border: 1px solid rgb(1, 104, 1);
+  color: rgb(1, 104, 1);
+}
+
+/* theme colors .clicked hover state might remove */
+#og .clicked:hover {
   border: 1px solid rgb(2, 255, 2);
   background-color: rgba(101, 245, 101, 0.712);
   color: var(--accent-black);
 }
 
+#dark .clicked:hover {
+  border: 1px solid rgb(3, 124, 3);
+  background-color: rgba(60, 148, 60, 0.712);
+  color: var(--accent-white);
+}
 /* if button was not clicked */
 .not-clicked {
+  pointer-events: none;
+}
+#og .not-clicked {
   border: 1px solid var(--accent-lighter);
   color: var(--accent-black);
   background-color: rgb(204, 185, 207);
-  pointer-events: none;
 }
-
 #dark .not-clicked {
+  border: 1px solid var(--dark-fourth);
+  color: var(--accent-white);
   background-color: grey;
 }
 
@@ -288,14 +327,17 @@
   margin-top: 1rem;
   height: 25px;
   width: 25px;
+}
+/* theme colors for the checkbox */
+#og .checkbox {
   accent-color: var(--fourth-color);
 }
-
 #dark .checkbox {
   accent-color: var(--dark-fourth);
 }
 
-.checkbox:hover {
+/* theme colors for the checkbox hover state */
+#og .checkbox:hover {
   accent-color: var(--accent-lighter);
 }
 

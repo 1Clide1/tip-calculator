@@ -10,6 +10,11 @@
   background: var(--secondary-color);
   backdrop-filter: blur(5px);
 }
+/* theme colors for navbar container */
+#og .navbar-container {
+  background: var(--secondary-color);
+}
+
 #dark .navbar-container {
   background: var(--dark-secondary);
 }
@@ -34,12 +39,23 @@
 
 .navbar-links,
 .menu-icon {
-  color: var(--fourth-color);
   font-size: 2rem;
   transition: 0.25s ease-in;
 }
-#dark .navbar-links,
-.menu-icon {
+/* theme colors for the navbar links and menu icon */
+#og .navbar-links {
+  color: var(--fourth-color);
+}
+
+#dark .navbar-links {
+  color: var(--dark-text);
+}
+
+#og .menu-icon {
+  color: var(--fourth-color);
+}
+
+#dark .menu-icon {
   color: var(--dark-text);
 }
 
@@ -59,14 +75,15 @@
     position: absolute;
     top: 51px;
     left: -200%;
-    background: var(--secondary-color);
     backdrop-filter: blur(5px);
-    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.25);
     transition: all 0.25s ease-out;
+    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.25);
+  }
+  #og .nav-ul {
+    background: var(--secondary-color);
   }
   #dark .nav-ul {
     background: var(--dark-secondary);
-    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.582);
   }
   .nav-ul.active {
     border-radius: 2rem;
