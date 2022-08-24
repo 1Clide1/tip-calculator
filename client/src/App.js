@@ -31,7 +31,7 @@ import { saveColorTheme } from "./utils/localStorage";
 import "./app.css";
 
 // creating the theme selector context
-// starting it as nothing to in the future change the context to a theme
+// starting the context as null to use it for another purpose later
 // exporting that way I can use this context on another part of the app
 export const themeSelector = createContext(null);
 
@@ -59,7 +59,6 @@ function App() {
   });
 
   // Section for the theme switcher code
-
   // state for the theme
   let [theme, setTheme] = useState("og");
 
@@ -80,13 +79,10 @@ function App() {
     }
   }, [theme]);
 
-  console.log(`theme is ${theme}`);
   return (
-    // have to wrap everything with the apollo provider to get graphql working
-    // wrapping the app with the theme selector context that way the whole app is affected
-    // need to also deconstruct whatever you are trying to export through context api. so in this case a variable and a function that I can use where ever on the website
+    // *note for future me* need to also deconstruct whatever you are trying to export through context api. so in this case a variable and a function that I can use where ever on the website
     <themeSelector.Provider value={{ theme, SwitchTheme }}>
-      {/* using theme variable instead of using the theme saved from local storage because that lags behind and causes a glitch */}
+      {/* using the theme var instead of using the localStorage var i made because it streamlines it and local storage is slow and causes bugs */}
       <div id={theme}>
         <ApolloProvider client={client}>
           <Router>
