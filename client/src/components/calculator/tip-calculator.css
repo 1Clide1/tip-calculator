@@ -262,8 +262,8 @@
 }
 
 #dark .percent-btn:hover {
-  color: var(--dark-secondary);
-  background-color: var(--dark-third);
+  color: var(--accent-black);
+  background-color: var(--dark-fourth);
   border: 1px solid var(--accent-black);
 }
 
