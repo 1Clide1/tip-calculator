@@ -138,6 +138,7 @@ const Navbar = () => {
             className="theme-switch-btn"
             onClick={SwitchTheme}
             color="secondary"
+            inputProps={{ "aria-label": "color theme switch" }}
           />
         </ul>
       </nav>
