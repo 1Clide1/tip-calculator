@@ -62,8 +62,6 @@
 .theme-switch-btn {
   align-self: center;
   margin-top: 0.2rem;
-  width: 100%;
-  cursor: pointer;
 }
 /* media query for mobile menu */
 @media screen and (max-width: 587px) {
