@@ -5,7 +5,7 @@ import { mainNavItems } from "./navItems";
 import Auth from "../../utils/auth";
 import { themeSelector } from "../../App";
 // importing the material ui switch and the styled component to properly style the toggle switch
-import { Switch, SwitchProps } from "@mui/material";
+import { Switch, alpha } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import "./navbar.css";
 
@@ -46,65 +46,40 @@ const Navbar = () => {
   // getting switch theme from the theme selector context that I have created
 
   const { SwitchTheme } = useContext(themeSelector);
+  const { theme } = useContext(themeSelector);
 
-  // material ui theme toggle switch customization
-  // **coming back to this because i do not fully understand how to properly override the switch**
-
-  // const ThemeToggleSwitch = styled((props: SwitchProps) => (
-  //   <Switch
-  //     focusVisibleClassName=".Mui-focusVisible"
-  //     disableRipple
-  //     {...props}
-  //   />
-  // ))(({ theme }) => ({
-  //   width: 42,
-  //   height: 26,
-  //   padding: 0,
-  //   "& .MuiSwitch-switchBase": {
-  //     padding: 0,
-  //     margin: 2,
-  //     transitionDuration: "300ms",
-  //     "&.Mui-checked": {
-  //       transform: "translateX(16px)",
-  //       color: "#fff",
-  //       "& + .MuiSwitch-track": {
-  //         backgroundColor:
-  //           theme.palette.mode === "dark" ? "#2ECA45" : "#65C466",
-  //         opacity: 1,
-  //         border: 0,
-  //       },
-  //       "&.Mui-disabled + .MuiSwitch-track": {
-  //         opacity: 0.5,
-  //       },
-  //     },
-  //     "&.Mui-focusVisible .MuiSwitch-thumb": {
-  //       color: "#33cf4d",
-  //       border: "6px solid #fff",
-  //     },
-  //     "&.Mui-disabled .MuiSwitch-thumb": {
-  //       color:
-  //         theme.palette.mode === "light"
-  //           ? theme.palette.grey[100]
-  //           : theme.palette.grey[600],
-  //     },
-  //     "&.Mui-disabled + .MuiSwitch-track": {
-  //       opacity: theme.palette.mode === "light" ? 0.7 : 0.3,
-  //     },
-  //   },
-  //   "& .MuiSwitch-thumb": {
-  //     boxSizing: "border-box",
-  //     width: 22,
-  //     height: 22,
-  //   },
-  //   "& .MuiSwitch-track": {
-  //     borderRadius: 26 / 2,
-  //     backgroundColor: theme.palette.mode === "light" ? "#E9E9EA" : "#39393D",
-  //     opacity: 1,
-  //     transition: theme.transitions.create(["background-color"], {
-  //       duration: 500,
-  //     }),
-  //   },
-  // }));
+  // customized style switch code
+  const ThemeToggleSwitch = styled(Switch)(({ theme }) => ({
+    padding: 8,
+    "& .MuiSwitch-switchBase": {
+      color: "#d472bf",
+      transitionDuration: "300ms",
+      "&.Mui-checked": {
+        color: "#f005be",
+        transform: "translateX(16px)",
+      },
+      "&:hover": {
+        backgroundColor: alpha("#e9a6a6", theme.palette.action.hoverOpacity),
+      },
+    },
+    "& .MuiSwitch-track": {
+      borderRadius: 22 / 1.5,
+      backgroundColor: "#ffe6e6",
+      transition: theme.transitions.create(["background-color"], {
+        duration: 500,
+      }),
+      opacity: 1,
+    },
+    "& .MuiSwitch-thumb": {
+      boxShadow: "0 2px 4px 0 rgb(0 35 11 / 20%)",
+      width: 16,
+      height: 16,
+      margin: 2,
+      transition: theme.transitions.create(["width"], {
+        duration: 200,
+      }),
+    },
+  }));
 
   return (
     <>
@@ -134,9 +109,12 @@ const Navbar = () => {
           ) : (
             <> </>
           )}
-          <Switch
+          <ThemeToggleSwitch
             className="theme-switch-btn"
-            onClick={SwitchTheme}
+            // current bug happening with either the checked or the onchange properties that do not keep the animation even though
+            onChange={SwitchTheme}
+            // if the saved color theme is on the dark mode if I refresh the page stay checked if not then don't do that using
+            checked={theme === "dark" && true}
             color="secondary"
             inputProps={{ "aria-label": "color theme switch" }}
           />
