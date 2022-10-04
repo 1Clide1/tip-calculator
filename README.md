@@ -8,7 +8,6 @@
 - [Deployment](#Deployment)
 - [Usage](#Usage)
 - [Credits](#Credits)
-- [License](#License)
 - [Technology](#Technology)
 
 ## Author
@@ -64,7 +63,3 @@ The use case for this app is users (in a group setting or not) who want to have 
 ## Credits
 
 As of right now this project is still going. It's helped me learn a lot about react and how to properly use that library to stay organized and also to make this simple app feel more modern than the more dated versions out there already. So far I can say graphql is very simple yet confusing to use will have to properly implement my changes to see if my opinion changes. Project is moving slowly but surely and I feel like it's been huge in helping me learn which is really important like I said. Close to being finished, Will update the readme to keep up with the changes.
-
-## License
-
-Currently this project has no license, might update this in the future or remove this section.
