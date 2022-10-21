@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 // import Auth from "../utils/auth";
 // import graphql
 import { useQuery } from "@apollo/client";
@@ -13,6 +13,8 @@ import { Grid } from "react-loader-spinner";
 const ProfilePage = () => {
   // grabbing the user data
   const { loading, data } = useQuery(QUERY_ME);
+  // add some state to specify loading time
+  const [delay, setDelay] = useState(false);
   // grabbing the tips from the user data
   const { loading: loadingTips, data: tipData } = useQuery(GET_TIPS);
   // setting the userdata as a variable or an empty object if there is nothing
@@ -21,8 +23,6 @@ const ProfilePage = () => {
   const tipsData = tipData?.tips.tipHistory || {};
   // mapping out the tips data to display the tip history
   const tipHistory = Object.values(tipsData).map((tip) => tip.tip);
-
-  console.log(tipHistory);
 
   // function to get the most frequent number
   const modeString = (array) => {
@@ -51,7 +51,15 @@ const ProfilePage = () => {
     return maxEl;
   };
 
-  if (loading) {
+  // this is a use effect to turn the state delay on and then off after a second whenever loading from graphql is taking place
+  useEffect(() => {
+    setDelay(true);
+    setTimeout(() => {
+      setDelay(false);
+    }, 1000);
+  }, [loading]);
+  // if the delay is set to true then return the loading animation
+  if (delay === true) {
     return (
       <div className="loader-icon">
         <Grid height="200" width="200" color="#6155a6" ariaLabel="loading" />
@@ -69,15 +77,11 @@ const ProfilePage = () => {
             <span className="tip-count">
               You have tipped:{userData.tipCount} times
             </span>
-            {loadingTips ? (
-              <span>LOADING TIPS...</span>
-            ) : (
-              tipHistory.map((tips, i) => (
-                <p className="tips-text" key={i}>
-                  ${tips}
-                </p>
-              ))
-            )}
+            {tipHistory.map((tips, i) => (
+              <p className="tips-text" key={i}>
+                ${tips}
+              </p>
+            ))}
           </div>
         </aside>
         <div className="fun-facts-container">
