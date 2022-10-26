@@ -1,15 +1,12 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "watch": "nodemon server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Brandon Diaz",
   "dependencies": {
     "apollo-server-express": "^3.6.3",
     "bcrypt": "^4.0.1",

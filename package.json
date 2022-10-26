@@ -10,9 +10,15 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "tip",
+    "calculator",
+    "keep",
+    "da",
+    "change"
+  ],
+  "author": "Brandon Diaz",
+  "license": "UNLICENSED",
   "devDependencies": {
     "concurrently": "^5.1.0"
   },
