@@ -39,8 +39,8 @@ function App() {
   // creates the link for gql
   const httpLink = createHttpLink({
     // not sure what i did to mess this up but for local host it is this below just comment the production one out to see graphql stuff
-    // uri: "http://localhost:3001/graphql",
-    uri: "/graphql",
+    uri: "http://localhost:3001/graphql",
+    // uri: "/graphql",
   });
 
   const authLink = setContext((_, { headers }) => {

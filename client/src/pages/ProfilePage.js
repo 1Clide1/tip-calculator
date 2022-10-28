@@ -57,7 +57,7 @@ const ProfilePage = () => {
     setTimeout(() => {
       setDelay(false);
     }, 1000);
-  }, [loading]);
+  }, [loading, loadingTips]);
   // if the delay is set to true then return the loading animation
   if (delay === true) {
     return (
