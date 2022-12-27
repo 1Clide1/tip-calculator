@@ -1,0 +1,20 @@
+{
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "requireConfigFile": false,
+    "sourceType": "module"
+  },
+  // for react to be more compatible
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  // needed to include ./index.js for the eslinter to properly work
+  "extends": ["./index.js", "airbnb", "airbnb/hooks"],
+  "rules": {}
+}

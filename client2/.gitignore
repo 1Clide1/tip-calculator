@@ -1,0 +1,22 @@
+# most of this is what came with react last time i did create react app honestly not sure if i need most of it but no harm on foul sort of deal 
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
