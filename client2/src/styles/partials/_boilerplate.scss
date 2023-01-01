@@ -1,0 +1,19 @@
+/* basic adjustments */
+html {
+  height: 100%; // this rule is used for me because it helps with keeping the footer on the bottom of the website
+  width: auto;
+  box-sizing: border-box;
+  font-size: 100%; // helps with browsers that way users can still agjust the size on their browser // default font size is 16px
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit; // this is here to make sure everything follows the boder-box rule
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Rubik', sans-serif;
+}

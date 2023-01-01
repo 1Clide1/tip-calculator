@@ -1,0 +1,17 @@
+.webpack-icon {
+  display: block;
+  margin-inline: auto;
+  margin-top: 1rem;
+  max-height: 40em;
+  animation: icon-rotate 3s ease-in-out normal infinite none;
+}
+
+@keyframes icon-rotate {
+  0% {
+    rotate: z 0deg;
+  }
+
+  100% {
+    rotate: z 360deg;
+  }
+}

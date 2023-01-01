@@ -1,0 +1,12 @@
+.header {
+  background-color: var(--color1);
+  color: var(--text-color);
+  font-weight: var(--font-weight);
+  padding: 0.3em;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.header-title {
+  text-transform: capitalize;
+  text-align: center;
+}
