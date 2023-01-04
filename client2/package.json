@@ -8,7 +8,13 @@
     "build": "webpack --mode production",
     "build-dev": "webpack"
   },
-  "keywords": [],
+  "keywords": [
+    "tip",
+    "calculator",
+    "keep",
+    "da",
+    "change"
+  ],
   "author": "Brandon Diaz",
   "license": "UNLICENSED",
   "dependencies": {
@@ -34,6 +40,7 @@
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-webpack-plugin": "^3.2.0",
+    "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.1",
     "postcss": "^8.4.18",
