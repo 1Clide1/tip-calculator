@@ -18,6 +18,8 @@ const plugins = [
   new HtmlWebpackPlugin({
     // my index html file is in the public folder
     template: path.join(__dirname, 'public', 'index.html'),
+    // for production use
+    minify: true,
   }),
   new EslintPlugin(),
   new CompressionPlugin({
@@ -68,6 +70,11 @@ module.exports = {
           //   sass needs to be at the bottom to avoid any post css errors
           'sass-loader',
         ],
+      },
+      // looking for html
+      {
+        test: /index\.html$/i,
+        loader: 'html-loader',
       },
       // this is for images
       {
