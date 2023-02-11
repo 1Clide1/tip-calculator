@@ -1,8 +1,0 @@
-# https://www.robotstxt.org/robotstxt.html
-User-agent: Twitterbot
-Disallow: *
-Disallow: /docs/search_results.html
-
-Allow: /images
-Allow: /archives
-Sitemap: https://schema.org/docs/sitemap.xml
