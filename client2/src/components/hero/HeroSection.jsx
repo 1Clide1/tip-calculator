@@ -1,3 +1,5 @@
+// imports
+import React from 'react';
 import '../styles/partials/_hero.scss';
 
 const HeroSection = () => {
