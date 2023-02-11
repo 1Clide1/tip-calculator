@@ -1,6 +1,28 @@
 :root{
-  --bold-font: font-weight: 700;
-  --color1: rgb(102, 210, 247);
-  --color2: rgb(78, 136, 184);
-  --text-color: rgb(2, 34, 65);
+   /* og colors */
+  --primary-color: #ffe6e6;
+  --secondary-color: #ffabe1;
+  --third-color: #a685e2;
+  --fourth-color: #6155a6;
+  /* dark mode colors */
+  --dark-primary: #1f1d36;
+  --dark-secondary: #3f3351;
+  --dark-third: #864879;
+  --dark-fourth: #753e69;
+  --dark-text: #e9a6a6;
+  /* accent colors that fit the main */
+  --accent-light: rgb(255, 231, 248);
+  --accent-lighter: rgb(252, 243, 249);
+  --accent-black: rgba(24, 0, 26, 0.753);
+  --accent-white: rgba(255, 255, 255, 0.979);
+  --accent-error: rgb(252, 67, 77);
+  /* font size vars */
+  --font-size-100: 0.5rem;
+  --font-size-200: 0.7rem;
+  --font-size-300: 1rem;
+  --font-size-400: 1.2rem;
+  --font-size-500: 1.5rem;
+  --font-size-600: 1.7rem;
+  --font-size-700: 2rem;
+  --font-size-800: 2.2rem;
 }
