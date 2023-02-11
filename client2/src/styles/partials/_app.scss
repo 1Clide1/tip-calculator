@@ -1,4 +1,20 @@
-// here for more generic rules instead of more specific partials for specific pages or components
-body {
-  background-color: var(--color2);
+/* for the scrollbar */
+::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--accent-lighter);
+  border: 0.5px solid var(--accent-black);
+  border-radius: 0 0.75em;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--fourth-color);
+  border-radius: 0 0.75em;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--third-color);
+  border: 0.5px solid var(--accent-light);
 }
