@@ -4,6 +4,14 @@ html {
   width: auto;
   box-sizing: border-box;
   font-size: 100%; // helps with browsers that way users can still agjust the size on their browser // default font size is 16px
+  .#dark {
+    height: 100vh;
+    background-color: var(--dark-primary);
+    color: var(--dark-text);
+  }
+  .#og {
+    color: var(--fourth-color);
+  }
 }
 *,
 *::before,
@@ -15,5 +23,7 @@ body {
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  background-color: var(--primary-color);
+  color: var(--fourth-color);
 }
