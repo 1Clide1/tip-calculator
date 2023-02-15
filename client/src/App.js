@@ -26,7 +26,7 @@ import ProfilePage from "./pages/ProfilePage";
 // import components
 import Navbar from "./components/navbar/Navbar";
 // import local storage util to save color theme
-import { saveColorTheme } from "./utils/localStorage";
+import { saveColorTheme } from "../../client2/src/utils/localStorage";
 // import css for the main app
 import "./app.css";
 

@@ -1,13 +1,13 @@
 // see SignupForm.js for comments
-import React, { useState } from "react";
-import { useMutation } from "@apollo/client";
-import { LOGIN_USER } from "../utils/mutations";
-import Auth from "../utils/auth";
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../../../client2/src/utils/mutations';
+import Auth from '../../../client2/src/utils/auth';
 // import css
-import "./signup-login.css";
+import './signup-login.css';
 
 const LoginForm = () => {
-  const [userFormData, setUserFormData] = useState({ email: "", password: "" });
+  const [userFormData, setUserFormData] = useState({ email: '', password: '' });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -33,50 +33,50 @@ const LoginForm = () => {
 
   return (
     <>
-      <div className="form-container">
-        <label title="Sign-Up Form" className="form-header">
+      <div className='form-container'>
+        <label title='Sign-Up Form' className='form-header'>
           Login
         </label>
         <form onSubmit={handleFormSubmit}>
-          <label htmlFor="email" title="Your Email" className="form-label">
+          <label htmlFor='email' title='Your Email' className='form-label'>
             Email:
           </label>
           <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="enter your email (example@example.com)"
-            className="form-input"
+            type='email'
+            id='email'
+            name='email'
+            placeholder='enter your email (example@example.com)'
+            className='form-input'
             value={userFormData.email}
             onChange={handleInputChange}
           />
           <label
-            htmlFor="password"
-            title="Your Password"
-            className="form-label"
+            htmlFor='password'
+            title='Your Password'
+            className='form-label'
           >
             Password:
           </label>
           <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="enter your password"
-            className="form-input"
+            type='password'
+            id='password'
+            name='password'
+            placeholder='enter your password'
+            className='form-input'
             value={userFormData.password}
             onChange={handleInputChange}
           />
-          <button type="submit" className="submit-btn">
-            {" "}
+          <button type='submit' className='submit-btn'>
+            {' '}
             Login Here
           </button>
         </form>
       </div>
       {/* if the sign up has an error it will display this instead */}
       {error && (
-        <div className="error-container">
-          <i className="lni lni-sad error-icon"></i>
-          <p className="error-title">
+        <div className='error-container'>
+          <i className='lni lni-sad error-icon'></i>
+          <p className='error-title'>
             Oops, the login didn't work, might want to try it again.
           </p>
         </div>

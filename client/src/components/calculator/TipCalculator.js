@@ -1,8 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
-import Auth from "../../utils/auth";
-import { useMutation } from "@apollo/client";
-import { ADD_TIP_HISTORY, ADD_PERCENTAGE } from "../../utils/mutations";
-import "./tip-calculator.css";
+import React, { useState, useEffect, useRef } from 'react';
+import Auth from '../../../../client2/src/utils/auth';
+import { useMutation } from '@apollo/client';
+import {
+  ADD_TIP_HISTORY,
+  ADD_PERCENTAGE,
+} from '../../../../client2/src/utils/mutations';
+import './tip-calculator.css';
 
 const TipCalculator = () => {
   // ALL THE STATES
@@ -11,21 +14,21 @@ const TipCalculator = () => {
 
   // set state for form
   const [form, setForm] = useState({
-    bill: "",
-    groupNum: "",
+    bill: '',
+    groupNum: '',
   });
 
   // set state for button percentages
   const [percentage, setPercentage] = useState({
-    value: "",
+    value: '',
   });
 
   // state to hold the total of the tip
   const [resultAmount, setResultAmount] = useState({
-    tip: "",
-    total: "",
-    groupTip: "",
-    groupTotal: "",
+    tip: '',
+    total: '',
+    groupTip: '',
+    groupTotal: '',
   });
 
   //   state to manage whether there is a group or not
@@ -79,11 +82,11 @@ const TipCalculator = () => {
       ...percentage,
       value,
     });
-    if (e.target.name === "ten-percent-btn") {
+    if (e.target.name === 'ten-percent-btn') {
       setPercentBtn(!tenPercentBtnClicked);
-    } else if (e.target.name === "fifteen-percent-btn") {
+    } else if (e.target.name === 'fifteen-percent-btn') {
       setFifteenPercentBtn(!fifteenPercentBtnClicked);
-    } else if (e.target.name === "twenty-percent-btn") {
+    } else if (e.target.name === 'twenty-percent-btn') {
       setTwentyPercentBtn(!twentyPercentBtnClicked);
     }
     // the rest of the buttons become unusable
@@ -95,7 +98,7 @@ const TipCalculator = () => {
     if (group) {
       const groupTip = parseInt((form.bill * percentage.value) / form.groupNum);
       const groupTotal = String(
-        (parseInt(form.bill) + parseInt(groupTip)) / parseInt(form.groupNum)
+        (parseInt(form.bill) + parseInt(groupTip)) / parseInt(form.groupNum),
       );
 
       setResultAmount({
@@ -123,7 +126,7 @@ const TipCalculator = () => {
             variables: { percentage: String(percentage.value) },
           });
           console.log(
-            `added tip history $${tip} and percentage ${percentage.value}% to user`
+            `added tip history $${tip} and percentage ${percentage.value}% to user`,
           );
         } catch (e) {
           console.log(e, error, err);
@@ -161,15 +164,15 @@ const TipCalculator = () => {
     setNotClicked(!percentBtnNotClicked);
     // setting the form input state back to nothing right away because that needs to be empty after reset
     setForm({
-      bill: "",
-      groupNum: "",
+      bill: '',
+      groupNum: '',
     });
     setPercentage({
-      value: "",
+      value: '',
     });
     // get the yes and no checkbox to uncheck them
-    const yesCheckbox = document.getElementById("yes-checkbox");
-    const noCheckbox = document.getElementById("no-checkbox");
+    const yesCheckbox = document.getElementById('yes-checkbox');
+    const noCheckbox = document.getElementById('no-checkbox');
 
     // if yes is checked uncheck it if yes isn't check then uncheck no
     if (yesCheckbox.checked === true) {
@@ -209,10 +212,10 @@ const TipCalculator = () => {
       if (clickedResultBGCounter >= 1) {
         return null;
       } else {
-        document.addEventListener("mousedown", startWarningModal);
+        document.addEventListener('mousedown', startWarningModal);
       }
       return () => {
-        document.removeEventListener("mousedown", startWarningModal);
+        document.removeEventListener('mousedown', startWarningModal);
       };
     });
     return clickedBG;
@@ -227,38 +230,38 @@ const TipCalculator = () => {
   };
   return (
     <>
-      <h1 className="tip-title">
-        <i className="lni lni-money-location"></i> Tip Calculator
+      <h1 className='tip-title'>
+        <i className='lni lni-money-location'></i> Tip Calculator
       </h1>
       <div
-        className="tip-calculator-container"
+        className='tip-calculator-container'
         itemScope
-        itemType="http://schema.org/Article"
+        itemType='http://schema.org/Article'
       >
-        <form className="tip-form-container" onSubmit={handleSubmit}>
-          <label className="label-title"> Enter Your Bill Amount</label> <br />
+        <form className='tip-form-container' onSubmit={handleSubmit}>
+          <label className='label-title'> Enter Your Bill Amount</label> <br />
           <input
-            className="bill-input"
-            name="bill"
-            type="number"
-            placeholder="how much $"
+            className='bill-input'
+            name='bill'
+            type='number'
+            placeholder='how much $'
             required
-            minLength="1"
+            minLength='1'
             onChange={handleInput}
             value={form.bill}
           />
-          <label className="label-title">How Much Do You Want To Tip</label>
+          <label className='label-title'>How Much Do You Want To Tip</label>
           <button
             // a little gross but if a button is clicked then it will be green if not it will be unusable
             className={
               !tenPercentBtnClicked
                 ? !percentBtnNotClicked
-                  ? "percent-btn"
-                  : "percent-btn not-clicked"
-                : "percent-btn clicked"
+                  ? 'percent-btn'
+                  : 'percent-btn not-clicked'
+                : 'percent-btn clicked'
             }
-            type="button"
-            name="ten-percent-btn"
+            type='button'
+            name='ten-percent-btn'
             id={percentage.ten}
             value={0.1}
             onClick={handlePercentage}
@@ -269,12 +272,12 @@ const TipCalculator = () => {
             className={
               !fifteenPercentBtnClicked
                 ? !percentBtnNotClicked
-                  ? "percent-btn"
-                  : "percent-btn not-clicked"
-                : "percent-btn clicked"
+                  ? 'percent-btn'
+                  : 'percent-btn not-clicked'
+                : 'percent-btn clicked'
             }
-            type="button"
-            name="fifteen-percent-btn"
+            type='button'
+            name='fifteen-percent-btn'
             id={percentage.fifteen}
             value={0.15}
             onClick={handlePercentage}
@@ -285,35 +288,35 @@ const TipCalculator = () => {
             className={
               !twentyPercentBtnClicked
                 ? !percentBtnNotClicked
-                  ? "percent-btn"
-                  : "percent-btn not-clicked"
-                : "percent-btn clicked"
+                  ? 'percent-btn'
+                  : 'percent-btn not-clicked'
+                : 'percent-btn clicked'
             }
-            type="button"
-            name="twenty-percent-btn"
+            type='button'
+            name='twenty-percent-btn'
             id={percentage.twenty}
             value={0.2}
             onClick={handlePercentage}
           >
             20%
           </button>
-          <div className={group ? "display-none" : "group-question-container"}>
-            <label className="label-title">In A Group?</label>
-            <div className="row">
-              <label className="label-title">Yes</label>
+          <div className={group ? 'display-none' : 'group-question-container'}>
+            <label className='label-title'>In A Group?</label>
+            <div className='row'>
+              <label className='label-title'>Yes</label>
               <input
-                id="yes-checkbox"
-                className="checkbox"
-                name="group"
-                type="checkbox"
+                id='yes-checkbox'
+                className='checkbox'
+                name='group'
+                type='checkbox'
                 onClick={handleGroup}
-              />{" "}
-              <label className="label-title">No</label>
+              />{' '}
+              <label className='label-title'>No</label>
               <input
-                id="no-checkbox"
-                className="checkbox"
-                name="nogroup"
-                type="checkbox"
+                id='no-checkbox'
+                className='checkbox'
+                name='nogroup'
+                type='checkbox'
                 // if you did not hit yes then you need to hit no before you can submit
                 required={group ? false : true}
               />
@@ -321,38 +324,38 @@ const TipCalculator = () => {
           </div>
           {group ? (
             <>
-              <label className="label-title">
+              <label className='label-title'>
                 How Many People Are In Your Group?
               </label>
               <input
-                className="bill-input"
-                name="groupNum"
-                type="number"
-                placeholder="how big is the group?"
+                className='bill-input'
+                name='groupNum'
+                type='number'
+                placeholder='how big is the group?'
                 required
-                minLength="1"
+                minLength='1'
                 onChange={handleInput}
                 value={form.groupNum}
               />
             </>
           ) : null}
-          <button className="submit-btn submit-tip" type="submit">
+          <button className='submit-btn submit-tip' type='submit'>
             Get Your Tip!
           </button>
         </form>
         {submit ? (
           // result bg is the blurred/darkened background
-          <div className="result-bg">
+          <div className='result-bg'>
             <div
               ref={clickedBG}
               className={
                 clickedResultBG === true
-                  ? "result-container active"
-                  : "result-container"
+                  ? 'result-container active'
+                  : 'result-container'
               }
             >
-              <span className="exit-icon">
-                <i className="lni lni-cross-circle " onClick={resetTipForm}></i>
+              <span className='exit-icon'>
+                <i className='lni lni-cross-circle ' onClick={resetTipForm}></i>
               </span>
               {/* down below are where the result modal is. 
               basically this will create a modal where it is either the results for one person/user. 
@@ -360,33 +363,33 @@ const TipCalculator = () => {
               {submit ? (
                 group ? (
                   <div>
-                    <p className="results-text">Your group's tips are:</p>
-                    <p className="results-text group-text">*per-person*</p>
-                    <p className="results-text">{resultAmount.groupTip}</p>
+                    <p className='results-text'>Your group's tips are:</p>
+                    <p className='results-text group-text'>*per-person*</p>
+                    <p className='results-text'>{resultAmount.groupTip}</p>
                   </div>
                 ) : (
                   <div>
-                    <p className="results-text">Your tip is:</p>
-                    <p className="results-text">${resultAmount.tip}</p>
+                    <p className='results-text'>Your tip is:</p>
+                    <p className='results-text'>${resultAmount.tip}</p>
                   </div>
                 )
               ) : null}
               {submit ? (
                 group ? (
                   <div>
-                    <p className="results-text">Your group's total is:</p>
-                    <p className="results-text group-text">*per-person*</p>
-                    <p className="results-text">{resultAmount.groupTotal}</p>
+                    <p className='results-text'>Your group's total is:</p>
+                    <p className='results-text group-text'>*per-person*</p>
+                    <p className='results-text'>{resultAmount.groupTotal}</p>
                   </div>
                 ) : (
                   <div>
-                    <p className="results-text">Your total is:</p>
-                    <p className="results-text">${resultAmount.total}</p>
+                    <p className='results-text'>Your total is:</p>
+                    <p className='results-text'>${resultAmount.total}</p>
                   </div>
                 )
               ) : null}
               {submit ? (
-                <button className="submit-btn" onClick={resetTipForm}>
+                <button className='submit-btn' onClick={resetTipForm}>
                   Tip Again?
                 </button>
               ) : null}
@@ -398,20 +401,20 @@ const TipCalculator = () => {
           <div
             className={
               clickedResultBG === false
-                ? "warning-modal active"
-                : "warning-modal"
+                ? 'warning-modal active'
+                : 'warning-modal'
             }
           >
             <i
-              className="lni lni-cross-circle exit-icon"
+              className='lni lni-cross-circle exit-icon'
               onClick={resetTipForm}
             ></i>
-            <p className="label-title width-50 margin-in">Hold Up</p>
-            <p className="results-text">You sure you wanna close?</p>
-            <button className="submit-btn" onClick={resetTipForm}>
+            <p className='label-title width-50 margin-in'>Hold Up</p>
+            <p className='results-text'>You sure you wanna close?</p>
+            <button className='submit-btn' onClick={resetTipForm}>
               Yeah
             </button>
-            <button className="submit-btn" onClick={RevertWarning}>
+            <button className='submit-btn' onClick={RevertWarning}>
               Nah
             </button>
           </div>
