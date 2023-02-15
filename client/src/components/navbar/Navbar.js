@@ -1,7 +1,7 @@
 // import section
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { mainNavItems } from './navItems';
+import { mainNavItems } from '../../../../client2/src/utils/navItems';
 import Auth from '../../../../client2/src/utils/auth';
 import { themeSelector } from '../../App';
 // importing the material ui switch and the styled component to properly style the toggle switch

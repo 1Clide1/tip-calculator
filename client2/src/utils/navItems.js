@@ -1,4 +1,4 @@
-import Auth from '../../../../client2/src/utils/auth';
+import Auth from './auth';
 // array that will contain the main items of the navbar
 // trying to see if they are logged which navbar will they get
 export const mainNavItems = Auth.loggedIn()
