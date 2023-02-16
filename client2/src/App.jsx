@@ -73,9 +73,17 @@ function App() {
 
   return (
     // i have to deconstruct the values because i need to use them through
-    <themeSelector.Provider value={{ theme, SwitchTheme }}> 
-      <HeroSection />
-      <Homepage />
+    <themeSelector.Provider value={{ theme, SwitchTheme }}>
+      <div id={theme}>
+        <ApolloProvider client={client}>
+          <Router>
+            <HeroSection />
+            <Switch>
+              <Route exact path='/' component={Homepage} />
+            </Switch>
+          </Router>
+        </ApolloProvider>
+      </div>
     </themeSelector.Provider>
   );
 }
