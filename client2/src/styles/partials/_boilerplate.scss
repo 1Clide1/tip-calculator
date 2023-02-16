@@ -4,12 +4,13 @@ html {
   width: auto;
   box-sizing: border-box;
   font-size: 100%; // helps with browsers that way users can still agjust the size on their browser // default font size is 16px
+
   .#dark {
     height: 100vh;
     background-color: var(--dark-primary);
     color: var(--dark-text);
   }
-  .#og {
+  .#light {
     color: var(--fourth-color);
   }
 }
