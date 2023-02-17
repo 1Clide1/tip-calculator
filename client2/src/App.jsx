@@ -65,11 +65,10 @@ function App() {
   };
 
   // anytime the theme is changed, save that to local storage
-  (useEffect = () => {
+  useEffect(() => {
     const savedTheme = JSON.parse(localStorage.getItem('color-theme', theme));
-    savedTheme !== null ? setTheme(savedTheme) : null; //this should fix a bug that made the theme save an incorrect value
-  }),
-    [theme];
+    savedTheme !== null ? setTheme(savedTheme) : null; //ternary operator because one line is more clean; this should fix a bug that made the theme save an incorrect value
+  }, [theme]);
 
   return (
     // i have to deconstruct the values because i need to use them through
