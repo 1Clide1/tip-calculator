@@ -29,11 +29,14 @@ function HeroSection() {
     useEffect(() => {
       let handler = (e) => {
         !domNode.current?.contains(e.target) ? closeMenu() : null; //if the click happens within the elements dimensions then nothing will happen else it will close the menu
+        document.addEventListener('mousedown', handler);
+        return document.removeEventListener('mousedown', handler); //remove the return function because i believe this as is should still work
       };
-      document.addEventListener('mousedown', handler);
-      return document.removeEventListener('mousedown', handler); //remove the return function because i believe this as is should still work
+      return domNode;
     });
   };
+
+  domNode = useClickOutside();
   return <header className='header'></header>;
 }
 
