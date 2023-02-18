@@ -1,16 +1,13 @@
 import '../styles/partials/_homepage.scss';
-import WebpackIcon from '../Assets/webpack-icon.png';
 
-const Homepage = () => {
+import HeroSection from '../components/hero/HeroSection';
+
+function Homepage() {
   return (
-    <body>
-      <img
-        className='webpack-icon'
-        src={WebpackIcon}
-        alt='webpack icon image'
-      />
-    </body>
+    <div>
+      <HeroSection />
+    </div>
   );
-};
+}
 
 export default Homepage;
