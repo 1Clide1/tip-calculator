@@ -3,7 +3,7 @@
 import React, { useState, createContext, useCallback, useEffect } from 'react';
 
 // react router dom
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // graph ql
 import {
@@ -19,7 +19,7 @@ import { setContext } from '@apollo/client/link/context';
 import { saveColorTheme } from '../../client2/src/utils/localStorage'; //save the color theme to local storage
 
 // components
-import HeroSection from './components/HeroContent';
+import HeroSection from './components/hero/HeroSection';
 
 // pages
 import Homepage from './pages/Homepage';
@@ -77,9 +77,9 @@ function App() {
         <ApolloProvider client={client}>
           <Router>
             <HeroSection />
-            <Switch>
+            <Routes>
               <Route exact path='/' component={Homepage} />
-            </Switch>
+            </Routes>
           </Router>
         </ApolloProvider>
       </div>
