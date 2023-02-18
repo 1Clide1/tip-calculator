@@ -3,10 +3,10 @@
   "parserOptions": {
     "requireConfigFile": false,
     "sourceType": "module"
-  },
-  // needed to enable this 
-  "babelOptions": {
-    "presets": ["@babel/preset-react"]
+    // needed to enable this
+    // "babelOptions": {
+    //   "presets": ["@babel/preset-react"]
+    // }
   },
   // for react to be more compatible
   "settings": {
