@@ -4,8 +4,10 @@ import React, { useState, useEffect, useRef, useContext } from 'react';
 import { Link } from 'react-router-dom';
 // import from utils
 import { mainNavItems } from '../../utils/navItems';
-import auth from '../../utils/auth';
-import { themeSelector } from '../../../../client/src/App';
+import Auth from '../../utils/auth';
+import { themeSelector } from '../../App';
+// styling
+import '../../styles/partials/_hero.scss';
 
 function HeroSection() {
   // using state to see if nav is clicked
@@ -36,8 +38,50 @@ function HeroSection() {
     });
   };
 
-  domNode = useClickOutside();
-  return <header className='header'></header>;
+  let domNode = useClickOutside();
+
+  // getting the theme selector and the function to switch the theme from the app
+  const { SwitchTheme } = useContext(themeSelector);
+  const { theme } = useContext(themeSelector);
+
+  return (
+    <>
+      <header className='nav-header'>
+        <nav ref={domNode} className='navbar-container'>
+          {/* menu icon for the website */}
+          <div className='menu-icon' onClick={handleClick}>
+            <i
+              className={clicked ? 'lni lni-cross-circle' : 'lni lni-menu'}
+            ></i>
+          </div>
+          <ul className={clicked ? 'nav-ul active' : 'nav-ul'}>
+            {mainNavItems.map((item, index) => {
+              return (
+                // make sure li always has a key
+                <li key={index} onClick={closeMenu}>
+                  <Link className={item.cName} to={item.url}>
+                    {item.text}
+                  </Link>
+                </li>
+              );
+            })}
+            {Auth.loggedIn() ? (
+              <li>
+                <Link onClick={Auth.logout} to='/' className='navbar-links'>
+                  {' '}
+                  Logout
+                </Link>
+              </li>
+            ) : (
+              <> </>
+            )}
+            {/* using placeholder button for now */}
+            <button className='theme-switch-btn' onClick={SwitchTheme} />
+          </ul>
+        </nav>
+      </header>
+    </>
+  );
 }
 
 export default HeroSection;
