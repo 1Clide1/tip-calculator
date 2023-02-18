@@ -16,7 +16,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 // uitls
-import { saveColorTheme } from '../../client2/src/utils/localStorage'; //save the color theme to local storage
+import { saveColorTheme } from './utils/localStorage'; //save the color theme to local storage
 
 // components
 import HeroSection from './components/hero/HeroSection';
