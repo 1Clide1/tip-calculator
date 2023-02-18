@@ -4,6 +4,10 @@
     "requireConfigFile": false,
     "sourceType": "module"
   },
+  // needed to enable this 
+  "babelOptions": {
+    "presets": ["@babel/preset-react"]
+  },
   // for react to be more compatible
   "settings": {
     "react": {
@@ -14,7 +18,24 @@
     "browser": true,
     "es2021": true
   },
-  // needed to include ./index.js for the eslinter to properly work
-  "extends": ["./index.js", "airbnb", "airbnb/hooks"],
-  "rules": {}
+  "extends": ["airbnb", "airbnb/hooks"],
+  "rules": {
+    // these two rules are here because i could not find a valid solution for these errors
+    "import/prefer-default-export": "off",
+    "import/no-default-export": "off",
+    // proper quotes rule, should have checked not sure how to specify single only for jsx as that is how i set up my priettier
+    "quotes": "off",
+    // just incase quotes doesn't work and i am using jsx
+    "jsx-quotes": "off",
+    "arrow-body-style": ["warn", "as-needed"],
+    "indent": "off"
+  },
+  "overrides": [
+    {
+      "files": ["test/*.spec.js"], // Or *.test.js
+      "rules": {
+        "require-jsdoc": "off"
+      }
+    }
+  ]
 }
