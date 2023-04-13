@@ -12,16 +12,17 @@ function TipCalculator() {
   // STATE CODE:
 
   // state for handling form submissions
-  const [submit, setSumbit] = useState(false);
+  const [submit, setSubmit] = useState(false);
 
   // state to manage the user input fields
   const [form, setForm] = useState({
     bill: '',
     groupSize: '', // was originally groupNum but this should be more readable
   });
+
   // state to manage percent button values in the form
   const [percentage, setPercentage] = useState({
-    percentValue: '', //just value seemed too vague so this should be better for readablility
+    percentValue: '',
   });
 
   //   state to save the tips and the tip totals
@@ -43,7 +44,7 @@ function TipCalculator() {
   // state to manage if a percent button is clicked or not
   const [percentBtnNotClicked, setNotClicked] = useState(false);
 
-  // state to manage if a user clicked away from the results modal; close modal
+  // state to manage if a user clicked away from the results modal to close modal
   const [clickedAwayRM, setClickedAwayRM] = useState(false); // RM= results modal
 
   // state counter to make sure the use only needs to click 1 time to start the warning modal
@@ -81,8 +82,9 @@ function TipCalculator() {
     const { value } = e.target;
     setPercentage({
       ...percentage,
-      value,
+      percentValue,
     });
+
     // makes the unclicked percent buttons greyed out
     if (e.target.name === 'ten-percent-btn') {
       setPercentBtn(!tenPercentBtnClicked);
@@ -98,19 +100,21 @@ function TipCalculator() {
   // function to make the calculations
   const tipCalculator = async () => {
     if (group) {
-      const groupTip = parseInt((form.bill * percentage.value) / form.groupNum);
+      const groupTip = parseInt(
+        (form.bill * percentage.percentValue) / form.groupSize,
+      );
       const groupTotal = String(
-        (parseInt(form.bill) + parseInt(groupTip)) / parseInt(form.groupNum),
+        (parseInt(form.bill) + parseInt(groupTip)) / parseInt(form.groupSize),
       );
 
-      setResultAmount({
+      setTipAmounts({
         groupTip,
         groupTotal,
       });
-      console.log(resultAmount.groupTotal, resultAmount.groupTip);
+      console.log(tipAmounts.groupTotal, tipAmounts.groupTip);
     } else {
       console.log(form, percentage);
-      const tip = String(parseInt(form.bill * percentage.value));
+      const tip = String(parseInt(form.bill * percentage.percentValue));
       const total = String(parseInt(form.bill) + parseInt(tip));
 
       setResultAmount({
@@ -126,10 +130,10 @@ function TipCalculator() {
             variables: { tip: String(tip) },
           });
           await addPercentage({
-            variables: { percentage: String(percentage.value) },
+            variables: { percentage: String(percentage.percentValue) },
           });
           console.log(
-            `added tip history $${tip} and percentage ${percentage.value}% to user`,
+            `added tip history $${tip} and percentage ${percentage.percentValue}% to user`,
           );
         } catch (e) {
           console.log(e, error, err);
@@ -168,10 +172,10 @@ function TipCalculator() {
     // setting the form input state back to nothing right away because that needs to be empty after reset
     setForm({
       bill: '',
-      groupNum: '',
+      groupSize: '',
     });
     setPercentage({
-      value: '',
+      percentValue: '',
     });
     // get the yes and no checkbox to uncheck them
     const yesCheckbox = document.getElementById('yes-checkbox');
@@ -183,15 +187,15 @@ function TipCalculator() {
     } else {
       noCheckbox.checked = false;
     }
-    if (clickedResultBG === true) {
-      setClickedResultBG(false);
+    if (clickedAwayRM === true) {
+      setclickedAwayRM(false);
     }
     if (warningModal === true) {
       setWarningModal(false);
     }
-    if (clickedResultBGCounter >= 1) {
-      console.log(`counter is ${clickedResultBGCounter}`);
-      setClickedResultBGCounter(--clickedResultBGCounter);
+    if (clickedAwayCounter >= 1) {
+      console.log(`counter is ${clickedAwayCounter}`);
+      setClickedAwayCounter(--clickedAwayCounter);
     }
   };
 
@@ -202,17 +206,17 @@ function TipCalculator() {
       let startWarningModal = (e) => {
         if (submit === true) {
           if (!clickedBG.current?.contains(e.target)) {
-            setClickedResultBG(!clickedResultBG);
+            setClickedAwayRM(!clickedAwayRM);
             setWarningModal(true);
-            setClickedResultBGCounter(++clickedResultBGCounter);
-            console.log(clickedResultBGCounter, clickedResultBG);
+            setClickedAwayCounter(++clickedAwayCounter);
+            console.log(clickedAwayCounter, clickedAwayRM);
           } else {
           }
           return null;
         }
       };
       // basically makes it happen only once that way the user can not just keep turning on and off this feature
-      if (clickedResultBGCounter >= 1) {
+      if (clickedAwayCounter >= 1) {
         return null;
       } else {
         document.addEventListener('mousedown', startWarningModal);
@@ -229,8 +233,8 @@ function TipCalculator() {
 
   // function if the user clicks the no button on the warning modal
   const RevertWarning = () => {
-    setClickedResultBG(false);
-    setClickedResultBGCounter(0);
+    setClickedAwayRM(false);
+    setClickedAwayCounter(0);
   };
 
   return (
@@ -334,13 +338,13 @@ function TipCalculator() {
               </label>
               <input
                 className='bill-input'
-                name='groupNum'
+                name='groupSize'
                 type='number'
                 placeholder='how big is the group?'
                 required
                 minLength='1'
                 onChange={handleInput}
-                value={form.groupNum}
+                value={form.groupSize}
               />
             </>
           ) : null}
@@ -354,7 +358,7 @@ function TipCalculator() {
             <div
               ref={clickedBG}
               className={
-                clickedResultBG === true
+                clickedAwayRM === true
                   ? 'result-container active'
                   : 'result-container'
               }
@@ -405,9 +409,7 @@ function TipCalculator() {
         {warningModal === true ? (
           <div
             className={
-              clickedResultBG === false
-                ? 'warning-modal active'
-                : 'warning-modal'
+              clickedAwayRM === false ? 'warning-modal active' : 'warning-modal'
             }
           >
             <i
