@@ -1,3 +1,5 @@
+import React from 'react';
+
 import '../styles/partials/_homepage.scss';
 
 import HeroSection from '../components/hero/HeroSection';
