@@ -103,9 +103,7 @@ function TipCalculator() {
       const groupTip = parseInt(
         (form.bill * percentage.percentValue) / form.groupSize,
       );
-      const groupTotal = String(
-        (parseInt(form.bill) + parseInt(groupTip)) / parseInt(form.groupSize),
-      );
+      const groupTotal = form.bill + groupTip / form.groupSize;
 
       setTipAmounts({
         groupTip,
@@ -114,8 +112,8 @@ function TipCalculator() {
       console.log(tipAmounts.groupTotal, tipAmounts.groupTip);
     } else {
       console.log(form, percentage);
-      const tip = String(parseInt(form.bill * percentage.percentValue));
-      const total = String(parseInt(form.bill) + parseInt(tip));
+      const tip = form.bill * percentage.percentValue;
+      const total = form.bill + tip;
 
       setResultAmount({
         tip,
@@ -127,10 +125,10 @@ function TipCalculator() {
         console.log(tip);
         try {
           await addTipHistory({
-            variables: { tip: String(tip) },
+            variables: { tip: tip },
           });
           await addPercentage({
-            variables: { percentage: String(percentage.percentValue) },
+            variables: { percentage: percentage.percentValue },
           });
           console.log(
             `added tip history $${tip} and percentage ${percentage.percentValue}% to user`,
@@ -272,7 +270,7 @@ function TipCalculator() {
             type='button'
             name='ten-percent-btn'
             id={percentage.ten}
-            value={0.1}
+            value={'0.1'}
             onClick={handlePercentage}
           >
             10%
@@ -288,7 +286,7 @@ function TipCalculator() {
             type='button'
             name='fifteen-percent-btn'
             id={percentage.fifteen}
-            value={0.15}
+            value={'0.15'}
             onClick={handlePercentage}
           >
             15%
@@ -304,7 +302,7 @@ function TipCalculator() {
             type='button'
             name='twenty-percent-btn'
             id={percentage.twenty}
-            value={0.2}
+            value={'0.2'}
             onClick={handlePercentage}
           >
             20%
