@@ -23,7 +23,7 @@ const plugins = [
     // for production use
     minify: true,
   }),
-  new EslintPlugin(),
+  new EslintPlugin({ extensions: ['js', 'jsx'] }),
   new CompressionPlugin({
     algorithm: 'gzip',
   }),
