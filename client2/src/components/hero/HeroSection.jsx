@@ -1,11 +1,17 @@
 // imports
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
+
 // react router dom
 import { Link } from 'react-router-dom';
+
 // import from utils
 import { mainNavItems } from '../../utils/navItems';
+
 import Auth from '../../utils/auth';
+
 import { themeSelector } from '../../App';
+
 // styling
 import '../../styles/partials/_hero.scss';
 
@@ -42,7 +48,7 @@ function HeroSection() {
 
   // getting the theme selector and the function to switch the theme from the app
   const { SwitchTheme } = useContext(themeSelector);
-  const { theme } = useContext(themeSelector);
+  // const { theme } = useContext(themeSelector);
 
   return (
     <>
