@@ -10,7 +10,6 @@ import '../../styles/partials/_tipcalculator.scss';
 
 function TipCalculator() {
   // STATE CODE:
-
   // state for handling form submissions
   const [submit, setSubmit] = useState(false);
 
@@ -79,7 +78,7 @@ function TipCalculator() {
 
   // handle the button values in the form
   const handlePercentage = (e) => {
-    const { value } = e.target;
+    const { percentValue } = e.target;
     setPercentage({
       ...percentage,
       percentValue,
