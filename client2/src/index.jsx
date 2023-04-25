@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client';
 import App from './App';
 import './styles/index.scss';
 
-//possible service worker activation code
+// possible service worker activation code
 // import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 // serviceWorkerRegistration.register();
 // if (process.env.NODE_ENV === 'development') {
