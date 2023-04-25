@@ -1,6 +1,8 @@
 // imports
 // react
-import React, { useState, createContext, useCallback, useEffect } from 'react';
+import React from 'react';
+
+import { useState, createContext, useEffect } from 'react';
 
 // react router dom
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -16,19 +18,20 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 // uitls
-import { saveColorTheme } from './utils/localStorage'; //save the color theme to local storage
+import { saveColorTheme } from './utils/localStorage'; // save the color theme to local storage
 
 // components
 import HeroSection from './components/hero/HeroSection';
 
 // pages
+
 import Homepage from './pages/Homepage';
 
 // styling
 import './styles/partials/_app.scss';
 
 // using createContext to be able to save light or dark mode throughout the whole site
-export const themeSelector = createContext(null); //setting null to repurpose later
+export const themeSelector = createContext(null); // setting null to repurpose later
 
 function App() {
   // creating a link for graph ql
@@ -59,21 +62,27 @@ function App() {
 
   // function for switching themes
   const SwitchTheme = () => {
-    setTheme(theme === 'light' ? (theme = 'dark') : (theme = 'light')); //if theme is on light mode switch it to dark; if it's dark switch it to light
-    saveColorTheme(theme); //save the theme color, function is from utils
-    console.log('color theme saved', `theme is ${theme}`);
+    setTheme(theme === 'light' ? (theme = 'dark') : (theme = 'light')); // if theme is on light mode switch it to dark; if it's dark switch it to light
+    saveColorTheme(theme); // save the theme color, function is from utils
+
+    // to test what theme was saved
+
+    // console.log('color theme saved', `theme is ${theme}`);
   };
 
   // anytime the theme is changed, save that to local storage
   useEffect(() => {
     const savedTheme = JSON.parse(localStorage.getItem('color-theme', theme));
-    savedTheme !== null ? setTheme(savedTheme) : null; //ternary operator because one line is more clean; this should fix a bug that made the theme save an incorrect value
+    if (savedTheme !== null) {
+      setTheme(savedTheme);
+    }
   }, [theme]);
 
   return (
     // i have to deconstruct the values because i need to use them through
     <themeSelector.Provider value={{ theme, SwitchTheme }}>
       <div id={theme}>
+        <HeroSection />
         <ApolloProvider client={client}>
           <Router>
             <HeroSection />
