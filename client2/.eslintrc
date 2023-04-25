@@ -37,7 +37,11 @@
     // just incase quotes doesn't work and i am using jsx
     "jsx-quotes": "off",
     "arrow-body-style": ["warn", "as-needed"],
-    "indent": "off"
+    "indent": "off",
+    // i use prietter to format my code, I understand the purpose so will just give a warning
+    "object-curly-newline": "warn",
+    // this rule might be useful so I would rather keep as a warning for case by case basis since sometimes I can't use const like the error seems to think i can 
+    "prefer-const": "warn"
   },
   "overrides": [
     {
