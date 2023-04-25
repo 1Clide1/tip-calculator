@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import Auth from '../../../client2/src/utils/auth';
-import { ADD_USER } from '../../../client2/src/utils/mutations';
+// import Auth from '../../../client2/src/utils/auth';
+// import { ADD_USER } from '../../../client2/src/utils/mutations';
 // import css
 import './signup-login.css';
 

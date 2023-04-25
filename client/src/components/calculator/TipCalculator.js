@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Auth from '../../../../client2/src/utils/auth';
+// import Auth from '../../../../client2/src/utils/auth';
 import { useMutation } from '@apollo/client';
-import {
-  ADD_TIP_HISTORY,
-  ADD_PERCENTAGE,
-} from '../../../../client2/src/utils/mutations';
+// import {
+//   ADD_TIP_HISTORY,
+//   ADD_PERCENTAGE,
+// } from '../../../../client2/src/utils/mutations';
 import './tip-calculator.css';
 
 const TipCalculator = () => {
