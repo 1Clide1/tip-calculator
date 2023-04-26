@@ -1,0 +1,152 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-inline: auto;
+  margin-top: 5rem;
+  width: 50vw;
+  height: auto;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 10px 10px 5px rgba(15, 15, 15, 0.1);
+}
+
+/* theme colors for the sign up/login form container */
+#og .form-container {
+  border: 1px solid var(--third-color);
+  background-color: var(--secondary-color);
+}
+
+#dark .form-container {
+  border: 1px solid var(--dark-third);
+  background-color: var(--dark-secondary);
+}
+
+.form-header {
+  width: 100%;
+  margin-bottom: 0.3rem;
+  border-radius: 0.3rem;
+  font-weight: 800;
+  font-size: var(--font-size-800);
+}
+
+#og .form-header {
+  border: 0.5px solid var(--accent-white);
+  background-color: var(--accent-light);
+}
+#dark .form-header {
+  border: 0.5px solid var(--accent-black);
+  background-color: var(--dark-primary);
+}
+
+/* form labels are the the labels for the form inputs */
+.form-label {
+  font-weight: 500;
+  font-size: var(--font-size-500);
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.3rem;
+  margin-bottom: 0.2rem;
+  border-radius: 0 0.5rem;
+}
+
+/* theme colors for the sigup/login input*/
+#og .form-input {
+  border: 1px solid var(--accent-black);
+  color: var(--fourth-color);
+  background-color: var(--accent-lighter);
+}
+
+#dark .form-input {
+  border: 1px solid var(--accent-lighter);
+  color: var(--dark-text);
+  background-color: var(--dark-primary);
+}
+
+/* theme colors for input focus */
+#og .form-input:focus {
+  outline: 1px solid var(--third-color);
+}
+#dark .form-input:focus {
+  outline: 1px solid var(--dark-third);
+}
+
+.submit-btn {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.3rem;
+  cursor: pointer;
+  font-size: var(--font-size-500);
+  font-weight: 500;
+  border-radius: 0 0.5rem;
+  border: 1px solid var(--accent-black);
+  color: var(--fourth-color);
+  background-color: var(--accent-lighter);
+}
+
+#dark .submit-btn {
+  color: var(--dark-text);
+  background-color: var(--dark-primary);
+}
+/* theme colors for the submit button's hover state */
+#og .submit-btn:hover {
+  color: var(--accent-lighter);
+  background-color: var(--fourth-color);
+  border: 1px solid var(--accent-black);
+}
+
+#dark .submit-btn:hover {
+  color: var(--dark-primary);
+  background-color: var(--dark-fourth);
+  border: 1px solid var(--accent-white);
+}
+
+.error-container {
+  text-align: center;
+  margin-top: 1rem;
+  width: 60%;
+  margin-inline: auto;
+  border-radius: 0.3rem;
+  padding: 1rem;
+  animation: error-animation 150ms linear normal;
+}
+/* theme colors for error container */
+#og .error-container {
+  border: 1px solid var(--accent-black);
+  color: var(--accent-error);
+  background-color: var(--fourth-color);
+}
+
+#dark .error-container {
+  border: 1px solid var(--dark-third);
+  color: var(--accent-error);
+  background-color: var(--dark-primary);
+}
+
+.error-icon {
+  font-size: var(--font-size-700);
+  margin-bottom: 0.3rem;
+}
+/* animation */
+@keyframes error-animation {
+  0% {
+    transform: translateY(200px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+/* for moblie css */
+/* mobile input fix */
+@media screen and (max-width: 600px) {
+  .form-input {
+    font-size: var(--font-size-300);
+  }
+}
