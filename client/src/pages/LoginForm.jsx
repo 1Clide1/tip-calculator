@@ -1,34 +1,33 @@
+// see SignupForm.js for comments
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-// import Auth from '../../../client2/src/utils/auth';
-// import { ADD_USER } from '../../../client2/src/utils/mutations';
+import { LOGIN_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
 // import css
 import './signup-login.css';
 
-const SignupForm = () => {
-  // set initial form state
-  const [userFormData, setUserFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-  });
-  // user inputs are set to the state
+const LoginForm = () => {
+  const [userFormData, setUserFormData] = useState({ email: '', password: '' });
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setUserFormData({ ...userFormData, [name]: value });
   };
-  // add user mutation
-  const [addUser, { error }] = useMutation(ADD_USER);
+  // add login mutation
+  // must be the same name as the mutation itself
+  const [login, { error }] = useMutation(LOGIN_USER);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      const { data } = await addUser({ variables: { ...userFormData } });
-      Auth.login(data.addUser.token);
-      console.log(data.addUser.token);
-    } catch (e) {
-      console.error(e);
+      // has to be called data
+      const { data } = await login({
+        variables: { ...userFormData },
+      });
+      Auth.login(data.login.token);
+      console.log(data.login.token);
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -36,25 +35,9 @@ const SignupForm = () => {
     <>
       <div className='form-container'>
         <label title='Sign-Up Form' className='form-header'>
-          Sign-Up
+          Login
         </label>
         <form onSubmit={handleFormSubmit}>
-          <label
-            htmlFor='username'
-            title='Your Username'
-            className='form-label'
-          >
-            Username:
-          </label>
-          <input
-            type='text'
-            id='username'
-            name='username'
-            placeholder='enter your username'
-            className='form-input'
-            value={userFormData.username}
-            onChange={handleInputChange}
-          />
           <label htmlFor='email' title='Your Email' className='form-label'>
             Email:
           </label>
@@ -85,7 +68,7 @@ const SignupForm = () => {
           />
           <button type='submit' className='submit-btn'>
             {' '}
-            Sign-Up Here
+            Login Here
           </button>
         </form>
       </div>
@@ -94,7 +77,7 @@ const SignupForm = () => {
         <div className='error-container'>
           <i className='lni lni-sad error-icon'></i>
           <p className='error-title'>
-            Oops, sign-up didn't work, might want to try it again.
+            Oops, the login didn't work, might want to try it again.
           </p>
         </div>
       )}
@@ -102,4 +85,4 @@ const SignupForm = () => {
   );
 };
 
-export default SignupForm;
+export default LoginForm;

@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-// import Auth from "../utils/auth";
+import React, { useState, useEffect } from 'react';
+// import Auth from '../utils/auth';
 // import graphql
-import { useQuery } from "@apollo/client";
-// import { QUERY_ME } from "../../../client2/src/utils/queries";
-// import { GET_TIPS } from "../../../client2/src/utils/queries";
+import { useQuery } from '@apollo/client';
+import { QUERY_ME } from '../utils/queries';
+import { GET_TIPS } from '../utils/queries';
 // import css
-import "./profile-page.css";
+import './profile-page.css';
 // import react loader
-import { Grid } from "react-loader-spinner";
+import { Grid } from 'react-loader-spinner';
 // import { removeBookId } from '../utils/localStorage';
 
 const ProfilePage = () => {
@@ -61,32 +61,32 @@ const ProfilePage = () => {
   // if the delay is set to true then return the loading animation
   if (delay === true) {
     return (
-      <div className="loader-icon">
-        <Grid height="200" width="200" color="#6155a6" ariaLabel="loading" />
+      <div className='loader-icon'>
+        <Grid height='200' width='200' color='#6155a6' ariaLabel='loading' />
       </div>
     );
   }
   return (
     <>
-      <div className="profile-page-container">
-        <span className="profile-title"> {userData.username}'s Tips Stats</span>
+      <div className='profile-page-container'>
+        <span className='profile-title'> {userData.username}'s Tips Stats</span>
         <aside>
-          <div className="tip-history-container">
-            <span className="tip-history-title">Tip History:</span>
+          <div className='tip-history-container'>
+            <span className='tip-history-title'>Tip History:</span>
             <br />
-            <span className="tip-count">
+            <span className='tip-count'>
               You have tipped:{userData.tipCount} times
             </span>
             {tipHistory.map((tips, i) => (
-              <p className="tips-text" key={i}>
+              <p className='tips-text' key={i}>
                 ${tips}
               </p>
             ))}
           </div>
         </aside>
-        <div className="fun-facts-container">
-          <span className="facts-title">Fun Facts</span>
-          <span className="most-tipped-text">
+        <div className='fun-facts-container'>
+          <span className='facts-title'>Fun Facts</span>
+          <span className='most-tipped-text'>
             {/* got rid of the use effect and replaced it with a better option */}
             You Usually tip ${modeString(tipHistory)}
           </span>
