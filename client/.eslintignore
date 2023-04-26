@@ -1,5 +1,2 @@
-.node_modules/*
-/node_modules/*
-/node_modules/
-./build
-/node_modules/react/index.js
+# found out how to ignore node modules properly
+node_modules/
