@@ -285,7 +285,7 @@ function TipCalculator() {
             type='button'
             name='fifteen-percent-btn'
             id={percentage.fifteen}
-            value={'0.15'}
+            value='0.15'
             onClick={handlePercentage}
           >
             15%
@@ -301,7 +301,7 @@ function TipCalculator() {
             type='button'
             name='twenty-percent-btn'
             id={percentage.twenty}
-            value={'0.2'}
+            value='0.2'
             onClick={handlePercentage}
           >
             20%
@@ -316,7 +316,8 @@ function TipCalculator() {
                 name='group'
                 type='checkbox'
                 onClick={handleGroup}
-              />{' '}
+              />
+              {' '}
               <label className='label-title'>No</label>
               <input
                 id='no-checkbox'
