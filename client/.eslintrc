@@ -7,9 +7,13 @@
       "jsx": true,
       "modules": true,
       "experimentalObjectRestSpread": true
+    },
+    "babelOptions": {
+      "parserOpts": {
+        "plugins": ["jsx"]
+      }
     }
   },
-
   // for react to be more compatible
   "settings": {
     "react": {
