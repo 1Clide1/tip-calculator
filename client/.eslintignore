@@ -1,2 +1,3 @@
 # found out how to ignore node modules properly
 node_modules/
+/node_modules/
