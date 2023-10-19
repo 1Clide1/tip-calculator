@@ -31,20 +31,21 @@ function HeroSection() {
   // custom hook to close the mobile nav menu by clicking away from the menu
   const useClickOutside = () => {
     // creating a reference
-    let domNode = useRef();
+    const domNode = useRef();
 
     useEffect(() => {
-      let handler = (e) => {
+      const handler = (e) => {
         // if the user clicks away from the element then the modal will close
-        !domNode.current?.contains(e.target) ? closeMenu() : null;
+        if (!domNode.current?.contains(e.target)) closeMenu();
         document.addEventListener('mousedown', handler);
         return document.removeEventListener('mousedown', handler); // remove the return function because i believe this as is should still work
       };
+      handler();
       return domNode;
     });
   };
 
-  let domNode = useClickOutside();
+  const domNode = useClickOutside();
 
   // getting the theme selector and the function to switch the theme from the app
   const { SwitchTheme } = useContext(themeSelector);
@@ -54,20 +55,18 @@ function HeroSection() {
     <header className='nav-header'>
       <nav ref={domNode} className='navbar-container'>
         {/* menu icon for the website */}
-        <div className='menu-icon' onClick={handleClick}>
+        <button className='menu-icon' type='button' onClick={handleClick}>
           <i className={clicked ? 'lni lni-cross-circle' : 'lni lni-menu'} />
-        </div>
+        </button>
         <ul className={clicked ? 'nav-ul active' : 'nav-ul'}>
-          {mainNavItems.map((item, index) => {
-            return (
-              // make sure li always has a key
-              <li key={index} onClick={closeMenu}>
-                <Link className={item.cName} to={item.url}>
-                  {item.text}
-                </Link>
-              </li>
-            );
-          })}
+          {mainNavItems.map((item) => (
+            // make sure li always has a key
+            <button onClick={closeMenu} type='button'>
+              <Link className={item.cName} to={item.url}>
+                {item.text}
+              </Link>
+            </button>
+          ))}
           {Auth.loggedIn() ? (
             <li>
               <Link onClick={Auth.logout} to='/' className='navbar-links'>
@@ -79,7 +78,12 @@ function HeroSection() {
             <> </>
           )}
           {/* using placeholder button for now */}
-          <button className='theme-switch-btn' onClick={SwitchTheme} />
+          <button
+            aria-label='switch theme button'
+            type='button'
+            className='theme-switch-btn'
+            onClick={SwitchTheme}
+          />
         </ul>
       </nav>
     </header>
